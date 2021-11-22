@@ -13,3 +13,6 @@ console.log(e++);
 
 var perplexed;
 console.log(perplexed + 2);
+
+var price = 2.7;
+console.log(price.toFixed(2));
