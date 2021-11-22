@@ -4,3 +4,9 @@ var c = ++a;
 console.log(a);
 console.log(b);
 console.log(c);
+
+var d = "hello";
+var e = false;
+
+console.log (d++);
+console.log(e++);
