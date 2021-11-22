@@ -10,3 +10,6 @@ var e = false;
 
 console.log (d++);
 console.log(e++);
+
+var perplexed;
+console.log(perplexed + 2);
