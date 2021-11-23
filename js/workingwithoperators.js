@@ -88,3 +88,7 @@ console.log(sample.indexOf('C'));
 
 
 console.log(sample.substring(6, 12));
+
+//------------------------------------------------------------------
+
+
