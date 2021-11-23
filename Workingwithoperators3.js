@@ -18,3 +18,10 @@ var conflict = true;
 var ispremium = true;
 var isexpired = true;
 var numberOfItems = 2;
+
+//-----------------------------------------------------------------
+
+var longEnough = true;
+var noUsername = true;
+var shortEnough = true;
+var noWhitespace = true;
