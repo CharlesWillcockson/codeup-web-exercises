@@ -76,12 +76,15 @@ console.log(!!"0")
 
 //----------------------------------------------------------------
 
-var sample = "Hello Codeup";
+var sample = "Hello Codeup ";
 
 console.log(sample.length);
 console.log(sample.toUpperCase());
-sample = sample + " Class";
+sample += "Students";
+sample = sample.replace("Students", "Class");
 console.log(sample);
 console.log(sample.indexOf('c'));
 console.log(sample.indexOf('C'));
-console.log(sample.indexOf('Codeup'));
+
+
+console.log(sample.substring(6, 12));
