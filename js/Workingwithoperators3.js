@@ -25,8 +25,15 @@ if (!isfull && !conflict) {
     console.log("Get your shit together!")
 
 //-----------------------------------------------------------------
+var twoPlusItems = true;
+var offerExpired = false;
+var premiumMember = true;
 
-
+if ((premiumMember && !offerExpired) || (twoPlusItems && !offerExpired)) {
+        console.log("The offer is valid!");
+}
+}
+//--------------------------------------------------------------------
 
 var longEnough = true;
 var noUsername = true;
@@ -34,6 +41,5 @@ var shortEnough = true;
 var noWhitespace = true;
 
 if (longEnough && noUsername && shortEnough && noWhitespace) {
-    console.log("Username and Password are acceptable!")
-
+    console.log("Username and Password are acceptable!");
 }
