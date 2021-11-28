@@ -62,10 +62,28 @@ function isMultipleOf(target, n){
 }
 
 function isTrue(boo1){
-    if (boo1 = true){
+    if (boo1 === true){
         return true;
     }else
         return false;
 }
 
-console.log(isTrue(false));
+function isFalse(boo1){
+    if (boo1 === false){
+        return true;
+    }else
+        return false;
+}
+
+function isTruthy(input){
+    if (input == true){
+        return true;
+    }else return false;
+}
+
+function isFalsy(input){
+    if (input == false){
+        return true;
+    }else return false;
+}
+
