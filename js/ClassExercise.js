@@ -30,11 +30,21 @@ function remainder(num1, num2) {
     return(num1 % num2);
 }
 
-console.log(add(12,8));
-console.log(subtract(12,2));
-console.log(multiply(5,2));
-console.log(divide(20,5));
-console.log(remainder(5,2));
+// console.log(add(12,8));
+// console.log(subtract(12,2));
+// console.log(multiply(5,2));
+// console.log(divide(20,5));
+// console.log(remainder(5,2));
+
+//----------------------------------------------
+
+function reverseString(input) {
+    return input.split("").reverse().join("");
+}
+
+console.log(reverseString("Charles"));
+
+
 
 
 
