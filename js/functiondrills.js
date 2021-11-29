@@ -62,28 +62,58 @@ function isMultipleOf(target, n){
 }
 
 function isTrue(boo1){
-    if (boo1 === true){
+    if (boo1){
         return true;
     }else
         return false;
 }
 
 function isFalse(boo1){
-    if (boo1 === false){
+    if (!boo1){
         return true;
     }else
         return false;
 }
 
 function isTruthy(input){
-    if (input == true){
+    if (input){
         return true;
     }else return false;
 }
 
-function isFalsy(input){
-    if (input == false){
+function isFalsey(input){
+    if (input === false || input === null || input === undefined || input === 0 || input == ""){
+        return "This is falsey";
+    }else return "Truthy"
+}
+
+function isVowel(letter){
+    return('aeiouAEIOU'.indexOf(letter) != -1)
+}
+
+function isConsonant(letter){
+    if ('aeiouAEIOU'.indexOf(letter) != -1){
+        return false;
+    }else return true;
+}
+
+function isCapital(letter){
+    if (letter == letter.toUpperCase()){
         return true;
     }else return false;
 }
+
+function isLowerCase(letter){
+    if (letter == letter.toLowerCase()){
+        return true;
+    }else return false;
+}
+
+function hasLowerCase(str){
+    return(/[a-z]/.test(str));
+}
+
+
+
+
 
