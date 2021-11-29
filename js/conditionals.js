@@ -155,6 +155,22 @@ alert("The total with your lucky number discount is $" + calculateTotal(luckyNum
  */
 
 
+    let number1 = confirm("Would you like to enter a number?");
+    if (number1 == true) {
+        let num1 = prompt("Please enter your number");
+
+        if ((num1 % 2) == 0) {
+            alert("Your number is even!");
+        } else alert("Your number is odd!!");
+
+        alert("Your number plus 100 is " + (parseInt(num1) + 100));
+
+        if (num1 > 0) {
+            alert("Your number is positive!")
+        } else if (num1 < 0) {
+            alert("Your number is negative!!");
+        } else alert("Zero is neither positive nor negative!");
+    }
 
 
 
