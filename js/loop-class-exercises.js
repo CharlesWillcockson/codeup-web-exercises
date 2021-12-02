@@ -18,15 +18,43 @@
 //     console.log(i)
 // }
 //Do While----------------------------------------------------
-let i = 0;
-// do{
+// let i = 0;
+// // do{
+// //     i++
+// //     console.log(i);
+// // }while (i <= 15);
+//
+//
+//
+// do {
+//     console.log(i)
+//     i = (i + 2);
+// }while (i <= 50);
+
+
+// let i = 0;
+//
+// while (i < 10){
 //     i++
-//     console.log(i);
-// }while (i <= 15);
+//     console.log(i)
+// }
+//
+// console.log("-----------------------------")
+//
+// let j = 0;
+// do{
+//     j++;
+//     console.log(j);
+// }while (j <= 10);
+
+let pword = "Banana";
+let pword1 = prompt("Please enter your password: ");
+
+while (pword1 != pword){
+    alert("Password is incorrect");
+    pword1 = prompt('Try again: ');
+}
+alert ("Password accepted");
 
 
 
-do {
-    console.log(i)
-    i = (i + 2);
-}while (i <= 50);
