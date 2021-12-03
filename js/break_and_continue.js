@@ -1,24 +1,29 @@
 
 
+var userNumber = 0;
 
-for (i = 1; i <= 50; i++){
-    let num1 = prompt("Enter an odd number: ");
-    if(num1 % 2 === 0){
+do {
+    userNumber = prompt("Enter an odd number betwixt 1 and 50");
+    if (userNumber < 1 || userNumber > 50) {
+        alert("Number needs to be between 1 and 50")
+    } else if (userNumber % 2 === 0) {
+        alert("Make it odd, dummy!");
+    } else if (isNaN(userNumber)) {
+        alert("Thats not a number, genius!")
+    } else {
+        alert('You entered a valid number!')
         break;
-        alert("enter an odd number dummy!");
     }
 
+}while(true)
+
+console.log("Number to skip is " + userNumber);
+
+for (let i = 1; i <= 50; i += 2){
+    if (i === userNumber){
+        console.log("Yikes: skipping number: " + userNumber);
+        continue;
     }
-
-for (i = 1; i <= 50; i++){
-    let num2 = prompt("Enter an odd number: ");
-    if (i == num2){
-        console.log("Number to skip is " + num2);
-    }else
-
+    console.log("Here is an odd number: " + i);
 }
-
-
-
-
 

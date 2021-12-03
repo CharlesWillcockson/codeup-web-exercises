@@ -7,25 +7,28 @@ function showMultiplicationTable(number){
 
 //---------------------------------------------------------------
 
-for (let i = 1; i <= 10; i++){
+for (let i = 0; i < 10; i++){
     var num1 = Math.floor(Math.random() * (200 - 20) + 20);
-    if (num1 % 2 == 0){
+    if (num1 % 2 === 0){
         console.log (num1 + " is even");
     }else console.log(num1 + " is odd");
 }
 
 //------------------------------------------------------------------
-let s = "";
 
 for (let i = 1; i <= 9; i++){
+    var str = "";
     for (let j = 1; j <= i; j++) {
+        str += i;
     }
-    s = (i);
-    console.log(s);
+
+    console.log(str);
 }
+for (let k=1; k <= 9; k++) {
 
+    console.log(k.toString().repeat(k));
 
-
+}
 
 //---------------------------------------------------------------------
 
