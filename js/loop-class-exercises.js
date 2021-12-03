@@ -47,14 +47,22 @@
 //     console.log(j);
 // }while (j <= 10);
 
-let pword = "Banana";
-let pword1 = prompt("Please enter your password: ");
+//
 
-while (pword1 != pword){
-    alert("Password is incorrect");
-    pword1 = prompt('Try again: ');
+// for(let i = 0; i <= 15; i++){
+//     console.log(i);
+// }
+
+// let dozens = 0;
+//
+// for (let i = i; i <= 4; i++ ){
+//     dozens = i;
+//     console.log(i);
+// }
+
+for(counter = 1; counter <= 5; counter++){
+    console.log('FIRST counter: ' + counter);
+    for(counter2 = 5; counter2 > 0; counter2--){
+        console.log('SECOND counter: ' + counter2);
+    }
 }
-alert ("Password accepted");
-
-
-

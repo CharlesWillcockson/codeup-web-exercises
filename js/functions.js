@@ -103,7 +103,7 @@ function tipCalculate() {
         return alert("Please re-enter your total bill and the percentage you wish to tip!")
 }
 
-console.log(tipCalculate());
+alert("You should tip " + tipCalculate());
 
 /**
  * TODO:
@@ -120,9 +120,9 @@ console.log(tipCalculate());
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
 function applyDiscount(price, discountPct) {
-    var discountAmt = (price * discountPct);
+    var discountAmt = (price * (discountPct / 100));
     var finalPrice = (price - discountAmt);
     return finalPrice;
 }
 
-console.log(applyDiscount(100, .2));
+console.log(applyDiscount(100, 20));
