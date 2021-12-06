@@ -36,3 +36,35 @@ let arreigh = [1, 2, 3, 4, 5]
 
     arreigh.reverse();
 console.log(arreigh);
+
+//-----------------------------------------------------------------------
+//Given two arrays of integers. Add up each element in the same position and
+// create a new array containing the sum of each pair. Assume both arrays are of the same length.
+let arr_3   = [4, 6, 7];
+let arr_4    = [8, 1, 9];
+let results = [];
+
+for (i=0; i < arr_3.length; i++){
+    results.push(arr_3[i] + arr_4[i]);
+}
+
+console.log(results);
+
+//--------------------------------------------------------------------------
+
+//Given a string change the every second letter to an uppercase ‘Z’. Assume
+// there are no space.
+
+let str = "codeup";
+let strArr = str.split("");
+
+for (i=0; i < strArr.length; i++){
+    if (strArr[i] % 2 === 0){
+      strArr[i].toUpperCase();
+    }
+    str = strArr.join("");
+}
+
+console.log(i);
+
+
