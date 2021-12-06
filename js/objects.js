@@ -29,10 +29,11 @@ var person = {
      */
 
     person.sayHello = function (){
-        return ("Hello from " + person.firstName + " " + person.lastName)
+        return ("Hello from " + this.firstName + " " + this.lastName)
         }
 
     console.log(person.sayHello())
+
 
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
@@ -52,10 +53,15 @@ var person = {
         {name: 'Cameron', amount: 180},
         {name: 'Ryan', amount: 250},
         {name: 'George', amount: 320}
-    // ];
+     ];
 
-
-
+shoppers.forEach(function (shopper){
+    let discount = (shopper.amount * .12);
+    let total = shopper.amount - discount;
+    if (shopper.amount > 200){
+        console.log(shopper.name + " qualified for a discount of $" + discount + ". His total after discount is $" + total);
+    }else console.log(shopper.name + " did not qualify for a discount, his total is $" + shopper.amount);
+    });
 
 
 
@@ -71,6 +77,24 @@ var person = {
      * > console.log(books[0].author.firstName) // "Douglas"
      * > console.log(books[0].author.lastName) // "Adams"
      */
+
+
+
+  function createBook (title, authorFirstName, authorLastName){
+      return {
+          title: title,
+          authorFirstName: authorFirstName,
+          authorLastName: authorLastName
+      }
+    }
+let books = [];
+
+  books.push(createBook("To Kill A Mockingbird", "Harper", "Lee"));
+    books.push(createBook("Fight Club", "Chuck", "Palahniuk"));
+    books.push(createBook("Romeo and Juliet", "William", "Shakespeare"));
+    books.push(createBook("The Bible", "God", "Jesus"));
+    books.push(createBook("The Cat in the Hat", "Dr.", "Seuss"));
+    console.log(books);
 
     /**
      * TODO:
@@ -96,6 +120,12 @@ var person = {
      *      ---
      *      ...
      */
+
+books.forEach(function (book, index){
+    console.log("Book # " + (index + 1) + "\n" + "Title: " + book.title + "\n" + "Author: " + book.authorFirstName + " " + book.authorLastName + "\n" + "---");
+
+})
+
 
     /**
      * Bonus:
