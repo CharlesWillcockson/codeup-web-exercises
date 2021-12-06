@@ -80,6 +80,7 @@ shoppers.forEach(function (shopper){
 
 
 
+
   function createBook (title, authorFirstName, authorLastName){
       return {
           title: title,
@@ -137,5 +138,7 @@ books.forEach(function (book, index){
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
+
+
 
 })();
