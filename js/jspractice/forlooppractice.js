@@ -1,0 +1,38 @@
+// Practice exercises from Coding Tutor Blog
+
+//Get the sum of two arrays…actually the sum of all their elements.
+// P.S. Each array includes only integer numbers. Output is a number too.
+
+let arr_1 = [3, 5, 22, 5,  7,  2,  45, 75, 89, 21, 2];
+let sum1 = 0;
+let arr_2 = [4, 6, 34, 7, 9, 10, 20, 30, 25, 15, 35]
+let sum2 = 0
+let total = 0
+
+for (i=0; i<arr_1.length; i++) {
+    sum1 += arr_1[i];
+}
+
+for (j=0; j<arr_2.length; j++) {
+    sum2 += arr_2[j];
+}
+total = sum1 + sum2;
+
+// ----------------------------------------------------------------------
+//Using a for loop print all even numbers up to and including n. Don’t include 0.
+
+let n1 = 29;
+
+for (i=1; i<=n1; i++){
+    if (i % 2 === 0){
+        console.log(i)
+    }
+}
+
+//----------------------------------------------------------------------
+//Using a for loop output the elements in reverse order.
+
+let arreigh = [1, 2, 3, 4, 5]
+
+    arreigh.reverse();
+console.log(arreigh);
