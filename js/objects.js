@@ -85,16 +85,22 @@ shoppers.forEach(function (shopper){
       return {
           title: title,
           authorFirstName: authorFirstName,
-          authorLastName: authorLastName
-      }
-    }
+          authorLastName: authorLastName,
+          // showBookInfo: function (){
+
+          }
+  }
+
+
+
 let books = [];
 
-  books.push(createBook("To Kill A Mockingbird", "Harper", "Lee"));
+    books.push(createBook("To Kill A Mockingbird", "Harper", "Lee"));
     books.push(createBook("Fight Club", "Chuck", "Palahniuk"));
     books.push(createBook("Romeo and Juliet", "William", "Shakespeare"));
     books.push(createBook("The Bible", "God", "Jesus"));
     books.push(createBook("The Cat in the Hat", "Dr.", "Seuss"));
+
     console.log(books);
 
     /**
