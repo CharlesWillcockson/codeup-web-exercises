@@ -1,4 +1,45 @@
+body {
+    background-color: aqua;
+    background-image: url("https://199lj33nqk3p88xz03dvn481-wpengine.netdna-ssl.com/wp-content/uploads/2021/06/codeup_logo.png");
+    font-family: "Snell Roundhand";
+}
+
 .fancy-header {
     color: blue; /* single line comment */
     text-decoration: underline;
+    text-align: center;
+}
+
+h2 {
+    color: red;
+    text-decoration: underline;
+}
+
+ol {
+    list-style: upper-alpha;
+}
+
+ul {
+    list-style: square;
+}
+
+table, td, tr {
+    font-size: 40px;
+    padding: 70px;
+}
+
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: purple;
+}
+
+a:hover{
+    color: hotpink;
+}
+
+a:active{
+    color: crimson;
 }
