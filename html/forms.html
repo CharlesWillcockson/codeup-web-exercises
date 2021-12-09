@@ -7,13 +7,13 @@
 <body>
     <form method="POST" action="https://request-inspector.glitch.me/">
         <label for="email">
-            Email: <input type="text" name="email" placeholder="Enter your email address">
+            Email: <input type="text" id="email" name="email" placeholder="Enter your email address">
         </label><br><br>
         <label for="password">
-            Password: <input type="password" name="password" placeholder="Enter your password">
+            Password: <input type="password" id="password" name="password" placeholder="Enter your password">
         </label><br>
         <label for="bio">
-            Bio: <textarea name="bio" placeholder="Say something about yourself here" rows="8" cols="50"></textarea>
+            Bio: <textarea name="bio" id="bio" placeholder="Say something about yourself here" rows="8" cols="50"></textarea>
         </label>
         <hr>
         <div>
@@ -25,7 +25,7 @@
         </div>
         <hr>
         <label for="browser">What browser are you working with?
-        <select name="browser">
+        <select name="browser" id="browser">
             <option value="aol">AOL</option>
             <option value="safari">Safari</option>
             <option value="chrome">Chrome</option>
