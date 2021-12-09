@@ -60,7 +60,7 @@ let strArr = str.split("");
 
 for (i=0; i < strArr.length; i++){
     if (strArr[i] % 2 === 0){
-      strArr[i].toUpperCase();
+      strArr[i].toUpperCase(){
     }
     str = strArr.join("");
 }
