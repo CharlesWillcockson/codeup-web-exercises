@@ -72,11 +72,19 @@ a {
     margin: 0 .5em 0 .5em;
     float: left;
     width: calc(50% - 3em);
+    background-color: white;
+}
+main.timeline{
+    background-color: white;
 }
 .who-to-follow{
     margin: 0 .5em 0 .5em;
     float: left;
     width: calc(25% - 3em);
+    padding: .5em;
+}
+aside.who-to-follow{
+    background-color: white;
 }
 .btn {
     border: 1px solid var(--main-link-color);
@@ -90,11 +98,34 @@ a {
     font-size: 1.3em;
     padding: 10px;
 }
-.media{
+/*.timeline{*/
+/*    border-bottom: 1px;*/
+/*    border-bottom-color: gray;*/
+/*    padding: .5em;*/
+
+/*}*/
+.media-body{
     width: 100%;
-    background-color: var(light-bg);
-    border-bottom: 1px;
-    border-bottom-color: var(--separator-color);
+    background-color: var(--light-bg);
+    border-bottom: 1px var(--separator-color) solid;
+    padding: .5em;
+    overflow:  ;
+}
+.media-image{
+    max-width: 50px;
+    float: left;
+    margin-top: 1.33em;
+}
+.media-body{
+    float: left;
+    width: 100%;
+}
+.profile-items{
+    list-style-type: none;
+    padding: 0px;
+}
+.profile-entry{
+    margin: .5em;
 }
 .img-circle {
     border-radius: 100%;
