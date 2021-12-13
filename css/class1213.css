@@ -1,0 +1,109 @@
+/*.container {*/
+/*    width: 400px;*/
+/*    height: 400px;*/
+/*    border: 5px solid black;*/
+/*    padding: 10px;*/
+/*}*/
+
+/*.box {*/
+/*    display: inline-block;*/
+/*    border: 2px solid black;*/
+/*    width: 100px;*/
+/*    height: 100px;*/
+/*    background-color: black;*/
+/*    color:white;*/
+/*    margin: 12px;*/
+/*}*/
+
+/*#one{*/
+/*    float: left;*/
+/*}*/
+
+/*#two{*/
+/*    float: right;*/
+/*}*/
+
+
+/*Float*/
+/*.row {*/
+/*    background-color: #b4d455;*/
+/*    height: 120px;*/
+/*    width: 90%;*/
+/*    border: 1px solid black;*/
+/*    margin-top: 4px;*/
+/*    margin-bottom: 4px;*/
+/*}*/
+
+/*.boxodd {*/
+/*    background-color: olivedrab;*/
+/*    color: white;*/
+/*    height: 90px;*/
+/*    width: 90px;*/
+/*    float: right;*/
+/*}*/
+
+/*.boxeven {*/
+/*    background-color: blueviolet;*/
+/*    color: white;*/
+/*    height: 90px;*/
+/*    width: 90px;*/
+/*    float: left;*/
+/*}*/
+
+/*.peven {*/
+/*    text-align: right;*/
+/*}*/
+
+/*.podd {*/
+/*    text-align: left;*/
+/*}*/
+
+/*Relative positioning*/
+
+.container{
+    border: 2px solid black;
+    height: 500px;
+}
+
+#one{
+    background-color: black;
+    color: white;
+    padding: 2px;
+    height: 100px;
+    width: 100px;
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+
+#two{
+    background-color: black;
+    color: white;
+    padding: 2px;
+    height: 100px;
+    width: 100px;
+    float: right;
+}
+
+#three{
+    background-color: black;
+    color: white;
+    padding: 2px;
+    height: 100px;
+    width: 100px;
+    position: relative;
+    top: 270px;
+
+}
+
+#four{
+    background-color: black;
+    color: white;
+    padding: 2px;
+    height: 100px;
+    width: 100px;
+    float: right;
+    position: relative;
+    top: 270px;
+
+}
