@@ -66,12 +66,12 @@ a {
 .profile-details{
     margin: 0 .5em 0 .5em;
     float: left;
-    width:calc(25% - 3em);
+    width:calc(25% - 1em);
 }
 .timeline{
     margin: 0 .5em 0 .5em;
     float: left;
-    width: calc(50% - 3em);
+    width: calc(50% - 1em);
     background-color: white;
 }
 main.timeline{
@@ -80,7 +80,7 @@ main.timeline{
 .who-to-follow{
     margin: 0 .5em 0 .5em;
     float: left;
-    width: calc(25% - 3em);
+    width: calc(25% - 1em);
     padding: .5em;
 }
 aside.who-to-follow{
