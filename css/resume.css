@@ -1,0 +1,41 @@
+body {
+    font-family: 'Fuzzy Bubbles', cursive;
+    margin: 3em;
+    background-color: yellow;
+}
+#header{
+    background-color: mediumpurple;
+    display: flex;
+    justify-content: space-around;
+}
+#name {
+    padding: 3em;
+}
+
+#headshot {
+    border-radius: 360px ;
+    height: 200px;
+    padding: 3em;
+}
+.contact-info{
+    margin-left: auto;
+    padding: 5em 15em 3em 3em;
+    align-items: center;
+}
+
+#info {
+    list-style: none;
+}
+
+#experience {
+    padding: 3em;
+}
+
+#education {
+    padding: 3em;
+}
+
+#bio{
+    padding: 4em;
+}
+
