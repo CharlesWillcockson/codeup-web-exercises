@@ -28,11 +28,18 @@ body {
 }
 
 #experience {
-    padding: 3em;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
 }
 
 #education {
-    padding: 3em;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 #bio{
