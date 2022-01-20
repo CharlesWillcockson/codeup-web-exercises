@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+</head>
+<body>
+<h1>Konami Code</h1>
+
+<script src="../js/jquery-2.2.4.js"></script>
+<script>
+    $(document).ready(function() {
+        "use strict";
+        const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
+        let keyPresses = [];
+        $(document).keyup(function(event){
+            let code = event.keyCode;
+            keyPresses.push(code);
+            console.log(keyPresses);
+            if (JSON.stringify(keyPresses) === JSON.stringify(konamiCode)){
+                $('body').css({
+                    'background' : 'url("../screenshot01.jpeg")',
+                    'background-size' : 'cover',
+                    
+            })
+            }
+        })
+    })
+
+
+</script>
+</body>
+</html>
