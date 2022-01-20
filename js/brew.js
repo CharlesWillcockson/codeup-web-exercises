@@ -13,3 +13,11 @@ if (canHaveADrink && isAtBar) {
 } else {
     console.log("No drinky drinky");
 }
+
+let band = {
+    band: 'sublime',
+    band.shred = function () {
+        console.log('RAAAAAAAAAA!!!!');
+    }
+}
+sublime.shred();
