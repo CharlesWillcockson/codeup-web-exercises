@@ -15,6 +15,10 @@
         .highlight {
             background-color: yellow;
         }
+
+        button{
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -114,7 +118,28 @@
         self-inflicted gunshot wound to the head.
     </dd>
 </dl>
-<h3></h3>
+<h3>Deaths at national parks by gender 2007-2018</h3>
+<ul>
+    <li>Male - 80%</li>
+    <li>Female - 18%</li>
+    <li>Other - 1%</li>
+    <li>Octopus - 1%</li>
+</ul>
+<h3>Deaths at national parkes by age 2007-2018</h3>
+<ul>
+    <li>0-14 years old: 35</li>
+    <li>15-34 years old: 693</li>
+    <li>35-54 years old: 663</li>
+    <li>55 years old and above: 686</li>
+</ul>
+<h3>Deaths at national parks by cause of death 2007-2018</h3>
+<li>Drowning - 668</li>
+<li>Motor Vehicle Crash - 475</li>
+<li>Falls/Slips - 335</li>
+<li>Homicide - 17</li>
+
+<button type="button">Last li</button>
+
 <script src="../js/jquery-2.2.4.js"></script>
 <script>
 
@@ -133,6 +158,11 @@
         $(this).toggleClass('highlight');
     })
 
+    $('li').css('list-style', 'none');
+
+    $('button').click(function (){
+        $('li').last().css('background-color', 'yellow')
+    })
 
 </script>
 

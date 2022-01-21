@@ -3,8 +3,8 @@
 // input example: "bJIENsdfRAIRVIrsRFAijgRar"
 
 function checkCase(str){
-    let array = str.split('');
-    for (i=0; i < array.length; i++){
+    let character = '';
+    while(i <= stringToFilter){
         if (array[i] === array[i].toLowerCase()){
             return (array[i] + ' is lower case!');
         }else {

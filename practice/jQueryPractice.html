@@ -52,11 +52,11 @@
 <hr>
 <!-- FIRST SECTION -->
 <div>
-  <section>
+  <section id="two">
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
   </section>
 </div>
-<section class="section-one">
+<section id="one" class="section-one">
   <div>
     <p class="bio">Lorem "ipsum" dolor sit amet, cons<br>ectetur adipisicing
       elit.
@@ -126,11 +126,16 @@
 </table>
 <script src="../js/jquery-2.2.4.js"></script>
 <script>
-  $('body').css('font-family', 'luxurious roman');
-  $('tr').css('border', '1px solid black');
+  $('*').css('font-family', 'luxurious roman');
+  $('table, td, tr').css('border', '1px solid black');
   $('li').css('list-style', 'none');
-  $('td, p, a').addClass('highlight');
+  $('td, h1, a').addClass('highlight');
   $('.highlight').css('background-color', 'yellow');
+  $('#one').css('background-color', 'purple');
+  $('#two').css('background-color', 'green');
+  $('img').click(function (){
+    $('img').css('transform', 'scale3d(1.5, 1.5, 1)')
+  })
 </script>
 
 
