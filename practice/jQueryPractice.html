@@ -1,10 +1,10 @@
 <!--1. give all table cells a black border-->
 <!--2. remove all bullet points from the unordered list items-->
 <!--3. change the font family of the entire page to luxurious roman-->
-<!-- -&ndash;&gt; <link rel=“preconnect” href=“https://fonts.googleapis.com”>-->
+<!--<link rel=“preconnect” href=“https://fonts.googleapis.com”>-->
 <!--<link rel=“preconnect” href=“https://fonts.gstatic.com” crossorigin>-->
 <!--<link href=“https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap” rel=“stylesheet”>-->
-<!-- -&ndash;&gt;font-family: ‘Abril Fatface’, cursive;-->
+<!--font-family: ‘Abril Fatface’, cursive;-->
 <!--font-family: ‘Questrial’, sans-serif;-->
 <!--4. give each section a unique id-->
 <!--5. using the unique id’s give each section a different background color-->
@@ -19,6 +19,9 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel=“preconnect” href=“https://fonts.googleapis.com”>
+  <link rel=“preconnect” href=“https://fonts.gstatic.com” crossorigin>
+  <link href=“https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap” rel=“stylesheet”>
   <title>Document</title>
   <style>
     body{
@@ -123,7 +126,11 @@
 </table>
 <script src="../js/jquery-2.2.4.js"></script>
 <script>
+  $('body').css('font-family', 'luxurious roman');
   $('tr').css('border', '1px solid black');
+  $('li').css('list-style', 'none');
+  $('td, p, a').addClass('highlight');
+  $('.highlight').css('background-color', 'yellow');
 </script>
 
 
