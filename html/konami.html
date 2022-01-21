@@ -17,14 +17,18 @@
             keyPresses.push(code);
             console.log(keyPresses);
             if (JSON.stringify(keyPresses) === JSON.stringify(konamiCode)){
-                $('body').css({
-                    'background' : 'url("../screenshot01.jpeg")',
-                    'background-size' : 'cover',
-            });
+                correctCode()
+            };
                 $('div.header').html('<h1>Cheats Activated!</h1>');
-            }
+            });
+        function correctCode(){
+            document.body.style.backgroundImage = "url(../practice/Contra_NES_CO_OP.gif)";
+            document.body.style.backgroundSize = "cover";
+            let audio = new Audio("../practice/03Stage1.mp3")
+            audio.play();
+        }
         })
-    })
+
 
 
 </script>
