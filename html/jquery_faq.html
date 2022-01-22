@@ -7,10 +7,12 @@
         body {
             text-align: center;
         }
+
         dt {
             margin: 5px 20px;
             font-weight: bold;
         }
+
         dd {
             margin: 0 20px;
         }
@@ -23,7 +25,7 @@
             background-color: yellow;
         }
 
-        button{
+        button {
             margin-top: 10px;
         }
     </style>
@@ -125,25 +127,27 @@
         self-inflicted gunshot wound to the head.
     </dd>
 </dl>
-<h3>Deaths at national parks by gender 2007-2018</h3>
-<ul>
+<h3 class="gender">Deaths at national parks by gender 2007-2018</h3>
+<ul id="gender">
     <li>Male - 80%</li>
     <li>Female - 18%</li>
     <li>Other - 1%</li>
     <li>Octopus - 1%</li>
 </ul>
-<h3>Deaths at national parkes by age 2007-2018</h3>
-<ul>
+<h3 class="age">Deaths at national parks by age 2007-2018</h3>
+<ul id="age">
     <li>0-14 years old: 35</li>
     <li>15-34 years old: 693</li>
     <li>35-54 years old: 663</li>
     <li>55 years old and above: 686</li>
 </ul>
-<h3>Deaths at national parks by cause of death 2007-2018</h3>
-<li>Drowning - 668</li>
-<li>Motor Vehicle Crash - 475</li>
-<li>Falls/Slips - 335</li>
-<li>Homicide - 17</li>
+<h3 class="cause">Deaths at national parks by cause of death 2007-2018</h3>
+<ul id="cause">
+    <li>Drowning - 668</li>
+    <li>Motor Vehicle Crash - 475</li>
+    <li>Falls/Slips - 335</li>
+    <li>Homicide - 17</li>
+</ul>
 
 <button type="button">Last li</button>
 
@@ -167,14 +171,25 @@
 
     $('li').css('list-style', 'none');
 
-    $('button').click(function (){
-        $('li').each(function (index){
+    $('button').click(function () {
+        $('li').each(function (index) {
             if (index === 3 || index === 7 || index === 11) {
                 $(this).css('background-color', 'yellow');
             }
         });
     })
 
+    $('.gender').click(function () {
+        $('#gender').children().css('font-weight', 'bold');
+    })
+
+    $('.age').click(function () {
+        $('#age').children().css('font-weight', 'bold');
+    })
+
+    $('.cause').click(function () {
+        $('#cause').children().css('font-weight', 'bold');
+    })
 </script>
 
 </body>
