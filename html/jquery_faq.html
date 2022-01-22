@@ -7,6 +7,13 @@
         body {
             text-align: center;
         }
+        dt {
+            margin: 5px 20px;
+            font-weight: bold;
+        }
+        dd {
+            margin: 0 20px;
+        }
 
         .invisible {
             visibility: hidden;
@@ -161,7 +168,11 @@
     $('li').css('list-style', 'none');
 
     $('button').click(function (){
-        $('ul').last().css('background-color', 'yellow')
+        $('li').each(function (index){
+            if (index === 3 || index === 7 || index === 11) {
+                $(this).css('background-color', 'yellow');
+            }
+        });
     })
 
 </script>
