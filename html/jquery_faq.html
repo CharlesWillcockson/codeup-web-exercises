@@ -41,10 +41,27 @@
 
         }
 
-        .img {
-            display: flex;
-            flex-direction: column;
+        .img1 {
+            border: 15px solid black;
+            height: 150px;
+            width: 150px;
+            background-image: url("../assets/916.jpeg");
         }
+
+        .img2 {
+            border: 15px solid black;
+            height: 150px;
+            width: 150px;
+            background-image: url("../assets/Dilbert_animation_cell.jpeg");
+        }
+
+        .img3 {
+            border: 15px solid black;
+            height: 150px;
+            width: 150px;
+            background-image: url("../assets/snoopy.jpeg");
+        }
+
 
     </style>
 </head>
@@ -169,18 +186,18 @@
 <button type="button" id="lastLI">Last li</button>
 
 <div class="images">
-    <div class="img">
-        <img class="image" id="bugs" src="../assets/916.jpeg" alt="">
-        <button class="swap">SWAP</button>
+    <div class="img1">
     </div>
-    <div class="img">
-        <img class="image" id="dilbert" src="../assets/Dilbert_animation_cell.jpeg" alt="">
-        <button class="swap">SWAP</button>
+    <button class="lswap">SWAP</button>
+
+    <div class="img2">
     </div>
-    <div class="img">
-        <img class="image" id="snopy" src="../assets/snoopy.jpeg" alt="">
-        <button class="swap">SWAP</button>
+    <button class="mswap">SWAP</button>
+
+    <div class="img3">
     </div>
+    <button class="rswap">SWAP</button>
+
 </div>
 
 <script src="../js/jquery-2.2.4.js"></script>
@@ -218,7 +235,10 @@
     $('.cause').click(function () {
         $('#cause').children().css('font-weight', 'bold');
 
+    $('.lswap').click(function(){
+        $('.img1').css('background-image', 'url('../assets/Dilbert_animation_cell.jpeg')'
 
+    })
 
 
     })
