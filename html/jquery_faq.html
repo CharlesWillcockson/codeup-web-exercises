@@ -25,9 +25,27 @@
             background-color: yellow;
         }
 
-        button {
+        #lastLI {
             margin-top: 10px;
+            margin-bottom: 25px;
         }
+        .images {
+            display: flex;
+            justify-content: space-around;
+            margin: 50px 0;
+        }
+        .image{
+            max-height: 150px;
+            max-width: 150px;
+            border: 10px solid black
+
+        }
+
+        .img {
+            display: flex;
+            flex-direction: column;
+        }
+
     </style>
 </head>
 <body>
@@ -148,8 +166,22 @@
     <li>Falls/Slips - 335</li>
     <li>Homicide - 17</li>
 </ul>
+<button type="button" id="lastLI">Last li</button>
 
-<button type="button">Last li</button>
+<div class="images">
+    <div class="img">
+        <img class="image" id="bugs" src="../assets/916.jpeg" alt="">
+        <button class="swap">SWAP</button>
+    </div>
+    <div class="img">
+        <img class="image" id="dilbert" src="../assets/Dilbert_animation_cell.jpeg" alt="">
+        <button class="swap">SWAP</button>
+    </div>
+    <div class="img">
+        <img class="image" id="snopy" src="../assets/snoopy.jpeg" alt="">
+        <button class="swap">SWAP</button>
+    </div>
+</div>
 
 <script src="../js/jquery-2.2.4.js"></script>
 <script>
@@ -171,12 +203,8 @@
 
     $('li').css('list-style', 'none');
 
-    $('button').click(function () {
-        $('li').each(function (index) {
-            if (index === 3 || index === 7 || index === 11) {
-                $(this).css('background-color', 'yellow');
-            }
-        });
+    $('#lastLI').click(function () {
+        $("ul li:nth-child(4)").css('background-color', 'yellow');
     })
 
     $('.gender').click(function () {
@@ -189,6 +217,10 @@
 
     $('.cause').click(function () {
         $('#cause').children().css('font-weight', 'bold');
+
+
+
+
     })
 </script>
 

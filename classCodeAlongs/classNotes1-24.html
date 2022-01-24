@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery nottes</title>
+</head>
+<body>
+<h1>jQuery!!</h1>
+<button>FADE</button>
+<div>
+    <p>Chicken is tasty!</p>
+</div>
+<script src="../js/jquery-2.2.4.js"></script>
+<script>
+    $('button').click(function (){
+        $('h1').slideToggle("slow");
+    })
+    $('div').animate({fontSize: '100px', opacity: '0.3'}, "slow")
+</script>
+</body>
+</html>
