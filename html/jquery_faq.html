@@ -34,32 +34,28 @@
             justify-content: space-around;
             margin: 50px 0;
         }
-        .image{
-            max-height: 150px;
-            max-width: 150px;
-            border: 10px solid black
 
+        .image {
+            height: 150px;
+            width: 150px;
         }
 
         .img1 {
             border: 15px solid black;
             height: 150px;
             width: 150px;
-            background-image: url("../assets/916.jpeg");
         }
 
         .img2 {
             border: 15px solid black;
             height: 150px;
             width: 150px;
-            background-image: url("../assets/Dilbert_animation_cell.jpeg");
         }
 
         .img3 {
             border: 15px solid black;
             height: 150px;
             width: 150px;
-            background-image: url("../assets/snoopy.jpeg");
         }
 
 
@@ -187,32 +183,32 @@
 
 <div class="images">
     <div class="img1">
+        <img id="bugs" class="image" src="../assets/916.jpeg" alt="">
+        <button class="lswap">SWAP</button>
     </div>
-    <button class="lswap">SWAP</button>
 
     <div class="img2">
+        <img id="dilbert" class="image" src="../assets/Dilbert_animation_cell.jpeg" alt="">
+        <button class="mswap">SWAP</button>
     </div>
-    <button class="mswap">SWAP</button>
 
     <div class="img3">
+        <img id="snoopy" class="image" src="../assets/snoopy.jpeg" alt="">
+        <button class="rswap">SWAP</button>
     </div>
-    <button class="rswap">SWAP</button>
 
 </div>
 
 <script src="../js/jquery-2.2.4.js"></script>
 <script>
 
-    // ADD CLASS TO ALL DD ELEMENTS
     $('dd').addClass('invisible');
 
 
-    // ADD A LINK THAT TOGGLES HIDDEN ON AND OFF
     $('h1').click(function () {
         $('dd').toggleClass('invisible');
     })
 
-    // ADD A CLICK EVENT TO HIGHLIGHT DT WHEN CLICKED
 
     $('dt').click(function () {
         $(this).toggleClass('highlight');
@@ -224,24 +220,21 @@
         $("ul li:nth-child(4)").css('background-color', 'yellow');
     })
 
-    $('.gender').click(function () {
-        $('#gender').children().css('font-weight', 'bold');
-    })
+    // $('.gender').click(function () {
+    //     $('#gender').children().css('font-weight', 'bold');
+    // })
+    //
+    // $('.age').click(function () {
+    //     $('#age').children().css('font-weight', 'bold');
+    // })
+    //
+    // $('.cause').click(function () {
+    //     $('#cause').children().css('font-weight', 'bold');
 
-    $('.age').click(function () {
-        $('#age').children().css('font-weight', 'bold');
-    })
+    $('h3').click(function(){
+        $(this).next().children().css('font-weight', 'bold')
+    });
 
-    $('.cause').click(function () {
-        $('#cause').children().css('font-weight', 'bold');
-
-    $('.lswap').click(function(){
-        $('.img1').css('background-image', 'url('../assets/Dilbert_animation_cell.jpeg')'
-
-    })
-
-
-    })
 </script>
 
 </body>
