@@ -30,5 +30,12 @@
             "tool"
         ],
         "price": 10
-    }
+    }, {
+        "title": "Awl",
+        "quantity": 12,
+        "categories": [
+            "tool"
+        ],
+        "price": 12
+}
 ]
