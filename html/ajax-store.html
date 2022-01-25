@@ -43,12 +43,7 @@
         $.get('../data/inventory.json').done(function (data){
             html = "";
             data.forEach(function (tool){
-                html += "<tr>\n" +
-                    "    <td>" + tool.title+ '</td>\n' +
-                    "    <td>" + tool.quantity + "</td>\n" +
-                    "    <td>" + tool.price + "</td>\n" +
-                    "    <td>" + tool.categories + "</td>/n" +
-                    "</tr>";
+                html += "<tr>\n" + "<td>" + tool.title+ '</td>' + "<td>" + tool.quantity + "</td>" + "<td>" + tool.price + "</td>" + "<td>" + tool.categories + "</td>" + "</tr>";
             });
             $('#insertProducts').empty().html(html);
         });
