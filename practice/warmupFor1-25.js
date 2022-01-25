@@ -1,14 +1,22 @@
 
 function repeatedDupes(str){
-    const result = [];
-    const strArr = str.split("").sort().join("").match(/(.)\1+/g);
 
-    if (strArr != null) {
-        strArr.forEach((elem) => {
-            result.push(elem[0]);
-        });
+    let counter = 1;
+    let strArr = str.split('');
+    let char = strArr[i]
+    let result = {};
+    for (let i = 0; i < str.length; i++) {
+        if (strArr[i] === strArr [i + 1]) {
+            counter++;
+        }
+        result = Object.assign(result, {$(this).attr('char'):$(this).attr('counter')});
+
     }
-    return result;
+    if (counter > 1){
+        result.push()
+    }
+
 }
 
-console.log(repeatedDupes('902344444'));
+
+console.log(repeatedDupes(9930201));

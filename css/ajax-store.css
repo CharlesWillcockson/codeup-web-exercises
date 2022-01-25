@@ -1,0 +1,37 @@
+body {
+    background-color: black;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4em;
+    background-color: grey;
+    border-radius: 10px;
+}
+
+table {
+    color: grey;
+    border: 1px solid grey;
+}
+
+th {
+    border: 1px solid grey;
+
+}
+
+td {
+    border: 1px solid grey;
+}
+
+#products {
+    margin: 0 auto;
+}
+
+.button {
+    align-items: center;
+}
+
+

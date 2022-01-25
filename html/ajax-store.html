@@ -2,10 +2,14 @@
 <html>
 <head>
     <title>Online Store</title>
+    <link rel="stylesheet" href="../css/ajax-store.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<h1>My Tool Store</h1>
+<h1>My &nbsp<span><img class="tool" src="../assets/640px-Tool_logo_2006.svg.png" alt=""></span>&nbsp Store</h1>
 
 <table id="products">
     <thead>
@@ -19,17 +23,41 @@
     <tbody id="insertProducts"></tbody>
 </table>
 
+<button class="refresh">Refreshify</button>
+
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
 <script>
 (function() {
     "use strict";
     // TODO: Create an AJAX GET request for the file under data/inventory.json
-
     // TODO: Take the data from inventory.json and append it to the products table
     //       HINT: Your data should come back as a JSON object; use console.log() to inspect
     //             its contents and fields
     //       HINT: You will want to target #insertProducts for your new HTML elements
+    let html;
+
+    loadTable();
+
+    function loadTable(){
+        $.get('../data/inventory.json').done(function (data){
+            html = "";
+            data.forEach(function (tool){
+                html += "<tr>\n" +
+                    "    <td>" + tool.title+ '</td>\n' +
+                    "    <td>" + tool.quantity + "</td>\n" +
+                    "    <td>" + tool.price + "</td>\n" +
+                    "    <td>" + tool.categories + "</td>/n" +
+                    "</tr>";
+            });
+            $('#insertProducts').empty().html(html);
+        });
+    };
+
+    console.log($.post('../data/inventory.json', {title: "awl", quantity: 3, price: 35, categories: "tool"}));
+
+
+    $('.refresh').click(loadTable);
 })();
 </script>
 
