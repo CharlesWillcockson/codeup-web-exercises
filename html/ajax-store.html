@@ -38,15 +38,20 @@
         //             its contents and fields
         //       HINT: You will want to target #insertProducts for your new HTML elements
         let html;
-
+        loadTable();
 
         function loadTable() {
             $.get('../data/inventory.json').done(function (data) {
                 html = "";
                 data.forEach(function (tool) {
-                    html += "<tr>\n" + "<td>" + tool.title + '</td>' + "<td>" + tool.quantity + "</td>" + "<td>" + tool.price + "</td>" + "<td>" + tool.categories + "</td>" + "</tr>";
+                    html += "<tr>" +
+                        "<td>" + tool.title + '</td>' +
+                        "<td>" + tool.quantity + "</td>" +
+                        "<td>" + tool.price + "</td>" +
+                        "<td>" + tool.categories + "</td>" +
+                        "</tr>";
                 });
-                $('#insertProducts').empty().html(html);
+                $('#insertProducts').html(html);
             });
         };
 
