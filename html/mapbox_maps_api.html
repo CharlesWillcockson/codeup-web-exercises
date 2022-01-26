@@ -10,7 +10,7 @@
 <h1>My 1st map!!</h1>
 <div id='map' style='width: 400px; height: 300px;'></div>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-<script src="mapbox-geocoder-utils.js"></script>
+<script src="../js/mapbox-geocoder-utils.js"></script>
 <script>
 
     let mapboxToken = 'pk.eyJ1IjoiY2hhcmxlc3cxMTYiLCJhIjoiY2t5dW5oYm8yMGc4djJ2cGl4eGJvdHBmOSJ9.HOyJMqOoXCHENkAzhN0iCw';
@@ -23,7 +23,7 @@
         zoom: 20 // starting zoom
     });
 
-    fgeocode("18039 W I-10, San Antonio, TX 78257", mapboxToken).then(function(result) {
+    geocode("18039 W I-10, San Antonio, TX 78257", mapboxToken).then(function(result) {
         console.log(result);
         map.setCenter(result);
         map.setZoom(20);

@@ -20,12 +20,13 @@
             $.ajax("../data/blog.json").done(function (data) {
                 console.log(data);
                 for (var i = 0; i < data.length; i++) {
-                    $('#posts').append(
+                    $.('#posts').append(
                         '<h1 class="h1 text-center mt-3 mx-3 bg-primary">' + data[i].title + '</h1>' +
                         '<p class="text-white mx-3 bg-info">' + data[i].content + '</p>' +
                         '<p class="ml-3"><small>' + 'Categories: ' + data[i].categories + '</small></p>' +
                         '<p class="h6 text-right mr-3">' + data[i].date + '</p>' + '<hr class="mx-3">');
                 }
+                // $.each(data, function ())
             });
         };
 
