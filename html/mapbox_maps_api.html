@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet'/>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
     <title>Mapz!!</title>
 </head>
 <body>
@@ -26,16 +28,40 @@
         center: [-98.4916, 29.4252], // starting position [lng, lat]
         zoom: 20 // starting zoom
     });
+
     geocode("18039 W I-10, San Antonio, TX 78257", mapboxToken).then(function (result) {
         console.log(result);
         map.setCenter(result);
-        map.setZoom(20);
+        map.setZoom(5);
     });
 
     let paneraInfo = {
         address: "18039 W I-10, San Antonio, TX 78257",
         popupHTML: "<p>Panera Bread!</p>"
     };
+    // Create a new marker.
+    const marker = new mapboxgl.Marker()
+        .setLngLat([-98.4916, 29.4252])
+        .addTo(map);
+
+    const markerHeight = 50;
+    const markerRadius = 10;
+    const linearOffset = 25;
+    const popupOffsets = {
+        'top': [0, 0],
+        'top-left': [0, 0],
+        'top-right': [0, 0],
+        'bottom': [0, -markerHeight],
+        'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+        'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+        'left': [markerRadius, (markerHeight - markerRadius) * -1],
+        'right': [-markerRadius, (markerHeight - markerRadius) * -1]
+    };
+    const popup = new mapboxgl.Popup({offset: popupOffsets, className: 'my-class'})
+        .setLngLat([-98.4916, 29.4252])
+        .setHTML("<h1>Hello World!</h1>")
+        .setMaxWidth("300px")
+        .addTo(map);
 
     function placeMarkerAndPopup(info, token, map) {
         geocode(info.address, token).then(function (coordinates) {
