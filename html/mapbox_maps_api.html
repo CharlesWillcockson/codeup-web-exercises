@@ -7,8 +7,24 @@
     <title>Title</title>
 </head>
 <body>
-<h1>My 1st map!!</h1>
-<div id='map' style='width: 400px; height: 300px;'></div>
+<div class="row">
+    <div class="col-6">
+        <h1>My 1st map!!  Zoom 5</h1>
+        <div id='map1' style='width: 400px; height: 300px;'></div>
+    </div>
+    <div class="col-6">
+        <h1>My 2nd map!!  Zoom 10</h1>
+        <div id="map2" style='width: 400px; height: 300px;'></div>
+    </div>
+    <div>
+        <h1>My 3rd map!!  Zoom 15</h1>
+        <div id="map3" style='width: 400px; height: 300px;'></div>
+    </div>
+    <div>
+        <h1>My 4th map!!  Zoom 20</h1>
+        <div id="map4" style='width: 400px; height: 300px;'></div>
+    </div>
+</div>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <script src="../js/mapbox-geocoder-utils.js"></script>
 <script>
@@ -16,20 +32,76 @@
     let mapboxToken = 'pk.eyJ1IjoiY2hhcmxlc3cxMTYiLCJhIjoiY2t5dW5oYm8yMGc4djJ2cGl4eGJvdHBmOSJ9.HOyJMqOoXCHENkAzhN0iCw';
 
     mapboxgl.accessToken = mapboxToken;
-    const map = new mapboxgl.Map({
-        container: 'map', // container ID
+    let map = new mapboxgl.Map({
+        container: 'map1', // container ID
         style: 'mapbox://styles/mapbox/streets-v9', // style URL
         center: [-98.4916, 29.4252], // starting position [lng, lat]
-        zoom: 20 // starting zoom
+        zoom: 5 // starting zoom
     });
+    let paneraInfo = {
+        address: "18039 W I-10, San Antonio, TX 78257",
+        popupHTML: "<p>Panera Bread!</p>"
+    };
 
-    geocode("18039 W I-10, San Antonio, TX 78257", mapboxToken).then(function(result) {
-        console.log(result);
-        map.setCenter(result);
-        map.setZoom(20);
-    });
+    function placeMarkerAndPopup(info, token, map) {
+        geocode(info.address, token).then(function (coordinates) {
+            var popup = new mapboxgl.Popup()
+                .setHTML(info.popupHTML);
+            var marker = new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .addTo(map)
+                .setPopup(popup);
+            popup.addTo(map);
+        });
 
+        placeMarkerAndPopup(paneraInfo, mapboxToken, map);
 
+        mapboxgl.accessToken = mapboxToken;
+        let map1 = new mapboxgl.Map({
+            container: 'map2', // container ID
+            style: 'mapbox://styles/mapbox/streets-v9', // style URL
+            center: [-98.4916, 29.4252], // starting position [lng, lat]
+            zoom: 10 // starting zoom
+        });
+        mapboxgl.accessToken = mapboxToken;
+        let map2 = new mapboxgl.Map({
+            container: 'map3', // container ID
+            style: 'mapbox://styles/mapbox/streets-v9', // style URL
+            center: [-98.4916, 29.4252], // starting position [lng, lat]
+            zoom: 15 // starting zoom
+        });
+        mapboxgl.accessToken = mapboxToken;
+        let map3 = new mapboxgl.Map({
+            container: 'map4', // container ID
+            style: 'mapbox://styles/mapbox/streets-v9', // style URL
+            center: [-98.4916, 29.4252], // starting position [lng, lat]
+            zoom: 20 // starting zoom
+        });
+
+        geocode("18039 W I-10, San Antonio, TX 78257", mapboxToken).then(function (result) {
+            console.log(result);
+            map.setCenter(result);
+            map.setZoom(5);
+        });
+
+        geocode("18039 W I-10, San Antonio, TX 78257", mapboxToken).then(function (result) {
+            console.log(result);
+            map1.setCenter(result);
+            map1.setZoom(10);
+        });
+
+        geocode("18039 W I-10, San Antonio, TX 78257", mapboxToken).then(function (result) {
+            console.log(result);
+            map2.setCenter(result);
+            map2.setZoom(15);
+        });
+
+        geocode("18039 W I-10, San Antonio, TX 78257", mapboxToken).then(function (result) {
+            console.log(result);
+            map3.setCenter(result);
+            map3.setZoom(20);
+        });
+    }
 
 
 </script>
