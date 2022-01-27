@@ -4,26 +4,14 @@
     <meta charset="UTF-8">
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet'/>
-    <title>Title</title>
+    <title>Mapz!!</title>
 </head>
 <body>
-<div class="row">
-    <div class="col-6">
-        <h1>My 1st map!!  Zoom 5</h1>
-        <div id='map1' style='width: 400px; height: 300px;'></div>
-    </div>
-    <div class="col-6">
-        <h1>My 2nd map!!  Zoom 10</h1>
-        <div id="map2" style='width: 400px; height: 300px;'></div>
-    </div>
     <div>
-        <h1>My 3rd map!!  Zoom 15</h1>
-        <div id="map3" style='width: 400px; height: 300px;'></div>
+        <h1>My 1st map!!</h1>
+        <div id='map' style='width: 100%; height: 700px;'></div>
     </div>
-    <div>
-        <h1>My 4th map!!  Zoom 20</h1>
-        <div id="map4" style='width: 400px; height: 300px;'></div>
-    </div>
+
 </div>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <script src="../js/mapbox-geocoder-utils.js"></script>
@@ -33,11 +21,17 @@
 
     mapboxgl.accessToken = mapboxToken;
     let map = new mapboxgl.Map({
-        container: 'map1', // container ID
+        container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v9', // style URL
         center: [-98.4916, 29.4252], // starting position [lng, lat]
-        zoom: 5 // starting zoom
+        zoom: 20 // starting zoom
     });
+    geocode("18039 W I-10, San Antonio, TX 78257", mapboxToken).then(function (result) {
+        console.log(result);
+        map.setCenter(result);
+        map.setZoom(20);
+    });
+
     let paneraInfo = {
         address: "18039 W I-10, San Antonio, TX 78257",
         popupHTML: "<p>Panera Bread!</p>"
@@ -45,9 +39,9 @@
 
     function placeMarkerAndPopup(info, token, map) {
         geocode(info.address, token).then(function (coordinates) {
-            var popup = new mapboxgl.Popup()
+            let popup = new mapboxgl.Popup()
                 .setHTML(info.popupHTML);
-            var marker = new mapboxgl.Marker()
+            let marker = new mapboxgl.Marker()
                 .setLngLat(coordinates)
                 .addTo(map)
                 .setPopup(popup);
@@ -56,51 +50,8 @@
 
         placeMarkerAndPopup(paneraInfo, mapboxToken, map);
 
-        mapboxgl.accessToken = mapboxToken;
-        let map1 = new mapboxgl.Map({
-            container: 'map2', // container ID
-            style: 'mapbox://styles/mapbox/streets-v9', // style URL
-            center: [-98.4916, 29.4252], // starting position [lng, lat]
-            zoom: 10 // starting zoom
-        });
-        mapboxgl.accessToken = mapboxToken;
-        let map2 = new mapboxgl.Map({
-            container: 'map3', // container ID
-            style: 'mapbox://styles/mapbox/streets-v9', // style URL
-            center: [-98.4916, 29.4252], // starting position [lng, lat]
-            zoom: 15 // starting zoom
-        });
-        mapboxgl.accessToken = mapboxToken;
-        let map3 = new mapboxgl.Map({
-            container: 'map4', // container ID
-            style: 'mapbox://styles/mapbox/streets-v9', // style URL
-            center: [-98.4916, 29.4252], // starting position [lng, lat]
-            zoom: 20 // starting zoom
-        });
 
-        geocode("18039 W I-10, San Antonio, TX 78257", mapboxToken).then(function (result) {
-            console.log(result);
-            map.setCenter(result);
-            map.setZoom(5);
-        });
 
-        geocode("18039 W I-10, San Antonio, TX 78257", mapboxToken).then(function (result) {
-            console.log(result);
-            map1.setCenter(result);
-            map1.setZoom(10);
-        });
-
-        geocode("18039 W I-10, San Antonio, TX 78257", mapboxToken).then(function (result) {
-            console.log(result);
-            map2.setCenter(result);
-            map2.setZoom(15);
-        });
-
-        geocode("18039 W I-10, San Antonio, TX 78257", mapboxToken).then(function (result) {
-            console.log(result);
-            map3.setCenter(result);
-            map3.setZoom(20);
-        });
     }
 
 
