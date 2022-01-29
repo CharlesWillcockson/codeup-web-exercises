@@ -2,83 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet'/>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
-
     <title>Mapz!!</title>
+    <style>
+        body {
+            background-color: #a3dbe1;
+        }
+
+        #map {
+            /* the width and height may be set to any size */
+            width: 75%;
+            height: 500px;
+            margin: 25px auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div>
         <h1>My 1st map!!</h1>
+
+<!--        Container that holds the map...-->
+
         <div id='map' style='width: 100%; height: 700px;'></div>
     </div>
 
-</div>
+<!--    mapbox JS-->
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-<script src="../js/mapbox-geocoder-utils.js"></script>
-<script>
 
-    let mapboxToken = 'pk.eyJ1IjoiY2hhcmxlc3cxMTYiLCJhIjoiY2t5dW5oYm8yMGc4djJ2cGl4eGJvdHBmOSJ9.HOyJMqOoXCHENkAzhN0iCw';
+<!--    mapbox geocoder-->
+<script src="../js/mapbox-geocoder-utils.js"></script>
+
+<!--    myJS-->
+<script>
+// added my token to a variable for ease of typing
+    const mapboxToken = 'pk.eyJ1IjoiY2hhcmxlc3cxMTYiLCJhIjoiY2t5dW5oYm8yMGc4djJ2cGl4eGJvdHBmOSJ9.HOyJMqOoXCHENkAzhN0iCw';
 
     mapboxgl.accessToken = mapboxToken;
     let map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/mapbox/streets-v9', // style URL
-        center: [-98.4916, 29.4252], // starting position [lng, lat]
-        zoom: 20 // starting zoom
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: [-98.4916, 29.4252],
+        zoom: 10
     });
 
-    geocode("18039 W I-10, San Antonio, TX 78257", mapboxToken).then(function (result) {
-        console.log(result);
-        map.setCenter(result);
-        map.setZoom(5);
-    });
+    let restaurants = [
+            {
+                address: "4834 Whirlwind Dr, San Antonio, TX 78217",
+                popupHTML: "<p>Ranger Creek Brewing & Distillation</p>",
+                web: "<a href='https://drinkrangercreek.com'>drinkrangercreek.com</a>",
+                image: "<img width='100px' height='100px' src='https://images.squarespace-cdn.com/content/v1/59da7f606f4ca34ba294a74e/1508874119755-1TQIBJ5BJABUSBS59NRQ/RangerCreek_CircularLogo1TPinverted.png?format=750w'>",
+            }
+    ]
 
-    let paneraInfo = {
-        address: "18039 W I-10, San Antonio, TX 78257",
-        popupHTML: "<p>Panera Bread!</p>"
-    };
-    // Create a new marker.
-    const marker = new mapboxgl.Marker()
-        .setLngLat([-98.4916, 29.4252])
-        .addTo(map);
+restaurants.forEach(function (restaurant){
+    placeMarkerAndPopup(restaurant, mapboxToken, map)
+})
 
-    const markerHeight = 50;
-    const markerRadius = 10;
-    const linearOffset = 25;
-    const popupOffsets = {
-        'top': [0, 0],
-        'top-left': [0, 0],
-        'top-right': [0, 0],
-        'bottom': [0, -markerHeight],
-        'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-        'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-        'left': [markerRadius, (markerHeight - markerRadius) * -1],
-        'right': [-markerRadius, (markerHeight - markerRadius) * -1]
-    };
-    const popup = new mapboxgl.Popup({offset: popupOffsets, className: 'my-class'})
-        .setLngLat([-98.4916, 29.4252])
-        .setHTML("<h1>Hello World!</h1>")
-        .setMaxWidth("300px")
-        .addTo(map);
-
-    function placeMarkerAndPopup(info, token, map) {
+function placeMarkerAndPopup(info, token, map){
         geocode(info.address, token).then(function (coordinates) {
             let popup = new mapboxgl.Popup()
-                .setHTML(info.popupHTML);
+                .setHTML(info.popupHTML + info.web + info.image);
             let marker = new mapboxgl.Marker()
                 .setLngLat(coordinates)
                 .addTo(map)
-                .setPopup(popup);
-            popup.addTo(map);
-        });
-
-        placeMarkerAndPopup(paneraInfo, mapboxToken, map);
+                .setPopup(popup)
+        })
+}
 
 
 
-    }
+
+
+
 
 
 </script>
