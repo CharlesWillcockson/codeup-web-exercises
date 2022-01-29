@@ -50,12 +50,21 @@
     });
 
     let restaurants = [
-            {
+        {
                 address: "4834 Whirlwind Dr, San Antonio, TX 78217",
                 popupHTML: "<p>Ranger Creek Brewing & Distillation</p>",
                 web: "<a href='https://drinkrangercreek.com'>drinkrangercreek.com</a>",
-                image: "<img width='100px' height='100px' src='https://images.squarespace-cdn.com/content/v1/59da7f606f4ca34ba294a74e/1508874119755-1TQIBJ5BJABUSBS59NRQ/RangerCreek_CircularLogo1TPinverted.png?format=750w'>",
-            }
+        },
+        {
+            address: "210 E Aviation Blvd, Universal City, TX 78148",
+            popupHTML: "<p>Gather Brewing Co.</p>",
+            web: "<a href='https://gatherbrewing.co'>gatherbrewing.co</a>",
+        },
+        {
+            address: "122 East Houston St, San Antonio, TX, 78205",
+            popupHTML: "<p>Bunz Handcrafted Burgers</p>",
+            web: "<a href='https://www.tastybunz.com'>www.tastybunz.com</a>",
+        }
     ]
 
 restaurants.forEach(function (restaurant){
@@ -65,7 +74,7 @@ restaurants.forEach(function (restaurant){
 function placeMarkerAndPopup(info, token, map){
         geocode(info.address, token).then(function (coordinates) {
             let popup = new mapboxgl.Popup()
-                .setHTML(info.popupHTML + info.web + info.image);
+                .setHTML(info.popupHTML + info.web);
             let marker = new mapboxgl.Marker()
                 .setLngLat(coordinates)
                 .addTo(map)
