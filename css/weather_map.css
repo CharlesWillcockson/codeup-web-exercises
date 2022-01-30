@@ -1,0 +1,11 @@
+header {
+    background-image: url("../assets/WallpaperFusion-lightning-storm-clouds-photo-1680x480.jpeg");
+    padding: 30px;
+    border-radius: 10px;
+    color: mediumpurple;
+    font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+#current-city {
+    font-size: 0.75em;
+}

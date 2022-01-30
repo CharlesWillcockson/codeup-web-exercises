@@ -2,10 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Weather Map Project</title>
+    <link rel="stylesheet" href="../css/weather_map.css">
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet'/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 <body>
+    <header class="topBar">
+        <h1>Weather Map App</h1>
+        <h3>Forecast for: <span id="current-city">San Antonio, TX</span></h3>
+    </header>
 
+    <script>
+        let weatherMapKey = 'f420004c43920363e4ff6e31fae9a1be'
 
+        $.get("http://api.openweathermap.org/data/2.5/weather", {
+            APPID: weatherMapKey,
+            q:     "San Antonio, US",
+            units: "imperial"
+        }).done(function (data) {
+            console.log(data);
+        });
+
+    </script>
 </body>
 </html>
