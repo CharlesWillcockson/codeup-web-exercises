@@ -9,26 +9,62 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
 </head>
 <body>
-    <header class="topBar">
-        <h1>Weather Map App</h1>
-        <h3>Forecast for: <span id="current-city">San Antonio, TX</span></h3>
-    </header>
+<header class="topBar">
+    <h1>Weather Map App</h1>
+    <h3>Forecast for:&nbsp <span id="current-city">San Antonio, TX</span></h3>
+    <div id="searchBar">
+        <form onsubmit="return false" id="cityForm">
+            <label for="search">Enter city:&nbsp</label>
+            <input type="text" id="search" placeholder="enter city">
+            <input type="submit" value="search">
+        </form>
+    </div>
+</header>
+<div>
+    <div class="weatherBox row" id="insertWeatherBoxes"></div>
+</div>
+<div id='map' style='width: 100%; height: 700px;'></div>
 
-    <script>
-        let weatherMapKey = 'f420004c43920363e4ff6e31fae9a1be'
 
-        $.get("http://api.openweathermap.org/data/2.5/weather", {
-            APPID: weatherMapKey,
-            q:     "San Antonio, US",
-            units: "imperial"
-        }).done(function (data) {
-            console.log(data);
-        });
+<script src="../js/jquery-2.2.4.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="../js/mapbox-geocoder-utils.js"></script>
 
-    </script>
+<script>
+    const weatherMapKey = 'f420004c43920363e4ff6e31fae9a1be';
+    const mapboxToken = 'pk.eyJ1IjoiY2hhcmxlc3cxMTYiLCJhIjoiY2t5dW5oYm8yMGc4djJ2cGl4eGJvdHBmOSJ9.HOyJMqOoXCHENkAzhN0iCw';
+    const weatherURL = "http://api.openweathermap.org/data/2.5/weather"
+
+    // MAPBOX MAP
+    mapboxgl.accessToken = mapboxToken;
+    let map = new mapboxgl.Map({
+        "container": 'map',
+        "style": 'mapbox://styles/mapbox/streets-v9',
+        "center": [-98.4916, 29.4252],
+        "zoom": 10,
+    });
+
+
+    $.get(weatherURL, {
+        APPID: weatherMapKey,
+        q: "San Antonio, US",
+        units: "imperial"
+    }).done(function (data) {
+        console.log(data);
+    });
+
+
+</script>
 </body>
 </html>
