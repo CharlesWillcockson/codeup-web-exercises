@@ -58,30 +58,39 @@
             units: "imperial",
         }).done(function (data) {
             console.log(data);
-            handleResponse(data);
         });
     }
 
-    let html = "";
 
-    function handleResponse(data) {
-        let highTemp = data.main.temp_max;
-        let lowTemp = data.main.temp_min;
-        let pressure = data.main.pressure;
-        let humidity = data.main.humidity;
-        let description = data.weather[0].description;
-
-        let itemHtml = "<div class='card col-2' style='width: 17rem'>"
-        itemHtml += '<span class="date-text">' + 'date' + '</span>';
-        itemHtml += '<h5 class="highText">' + 'H ' + highTemp + '</h5>';
-        itemHtml += '<h5 class="lowText">' + 'L ' + lowTemp + '</h5>';
-        itemHtml += '<p class="card-footer my-1">' + description + '</p>';
-        itemHtml += '</div>';
-        html += itemHtml;
-
-
-        $('#insertWeatherBoxes').html(html);
-    }
+    // function handleResponse(data) {
+        // let highTemp = data.main.temp_max;
+        // let lowTemp = data.main.temp_min;
+        // let pressure = data.main.pressure;
+        // let humidity = data.main.humidity;
+        // let description = data.weather[0].description;
+        // let date = data.main.dt_txt;
+    //     for (i = 0; 1 < data.list.length; i++) {
+    //         if (data.list[i] % 6 === 0){
+    //             days[day + i] =
+    //                 {'date': data.list[i].main.dt_txt,
+    //                  'highTemp': data.list[i].main.temp_max,
+    //                  'lowTemp': data.list[i].main.temp_min,
+    //                  'pressure': data.list[i].main.pressure,
+    //                  'description': data.list[i].main.weather[0].description,
+    //                 }
+    //
+    //         }
+    //
+    // }
+        // let itemHtml = "<div class='card col-2' style='width: 17rem'>"
+        // itemHtml += '<span class="date-text">' + data.list[i].main.dt_txt + '</span>';
+        // itemHtml += '<h5 class="highText">' + 'H ' + data.list[i].main.temp_max + '</h5>';
+        // itemHtml += '<h5 class="lowText">' + 'L ' + data.list[i].main.temp_min + '</h5>';
+        // itemHtml += '<p class="card-footer my-1">' + data.list[i].weather[0].description + '</p>';
+        // itemHtml += '</div>';
+        // $('#insertWeatherBoxes').html(html);
+        // html += itemHtml;
+    // }
 </script>
 </body>
 </html>
