@@ -19,17 +19,39 @@
         h1 {
             text-align: center;
         }
+
+        #zoom {
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
+
     <div>
         <h1>My 1st map!!</h1>
+        <div id="submit-form">
+            <form id="userEntry">
+                <label for="search">Search: &nbsp</label>
+                <input type="text" id="search" placeholder="enter an address">
+                <button type="submit" id="btn" value="search">Submit</button>
+            </form>
+        </div>
+        <label for="zoom">Choose a zoom level:</label>
 
+        <select name="zoom" id="zoom">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+
+        <button type="button" id="hide">Hide markers</button>
 <!--        Container that holds the map...-->
 
         <div id='map' style='width: 100%; height: 700px;'></div>
     </div>
 
+    <script src="../js/jquery-2.2.4.js"></script>
 <!--    mapbox JS-->
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 
@@ -40,7 +62,6 @@
 <script>
 // added my token to a variable for ease of typing
     const mapboxToken = 'pk.eyJ1IjoiY2hhcmxlc3cxMTYiLCJhIjoiY2t5dW5oYm8yMGc4djJ2cGl4eGJvdHBmOSJ9.HOyJMqOoXCHENkAzhN0iCw';
-
     mapboxgl.accessToken = mapboxToken;
     let map = new mapboxgl.Map({
         container: 'map',
@@ -48,6 +69,17 @@
         center: [-98.4916, 29.4252],
         zoom: 10
     });
+
+    // Change the zoom using a dropdown selection
+
+    $('#zoom').change(function (e){
+        console.log(e.target.value)
+        map.setZoom(e.target.value)
+    })
+
+
+
+    // geocode()
 
     let restaurants = [
         {
@@ -64,7 +96,7 @@
             address: "122 East Houston St, San Antonio, TX, 78205",
             popupHTML: "<p>Bunz Handcrafted Burgers</p>",
             web: "<a href='https://www.tastybunz.com'>www.tastybunz.com</a>",
-        }
+        },
     ]
 
 restaurants.forEach(function (restaurant){
@@ -81,10 +113,6 @@ function placeMarkerAndPopup(info, token, map){
                 .setPopup(popup)
         })
 }
-
-
-
-
 
 
 
