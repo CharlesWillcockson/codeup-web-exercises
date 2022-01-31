@@ -63,4 +63,15 @@ console.log(longestEmail);
 
 // Use .reduce to get the list of user's names in a single string. Example: Your instructors are: ryan, luis, zach, fernando, justin.
 
-let userString = `Your instructors are: ${users.reduce}`
+// let userString = users.map(users => users.name)
+let userString = `Your momma is sleeping with ${users.reduce(function (names, item){
+    return names + ' ' + item.name
+}, "")}`
+
+console.log(userString)
+
+// BONUS
+// Use .reduce to get the unique list of languages from the list of users.
+
+let uniqueLanguages = users.reduce((unique, current) => (current.language === unique.language ? current : unique));
+console.log(uniqueLanguages)
