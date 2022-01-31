@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet'/>
     <title>Mapz!!</title>
     <style>
         body {
@@ -23,35 +23,41 @@
         #zoom {
             margin-top: 15px;
         }
+
+        .popUp {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
     </style>
 </head>
 <body>
 
-    <div>
-        <h1>My 1st map!!</h1>
-        <div id="submit-form">
-            <form id="userEntry">
-                <label for="search">Search: &nbsp</label>
-                <input type="text" id="search" placeholder="enter an address">
-                <button type="submit" id="btn" value="search">Submit</button>
-            </form>
-        </div>
-        <label for="zoom">Choose a zoom level:</label>
-
-        <select name="zoom" id="zoom">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
-        </select>
-
-        <button type="button" id="hide">Hide markers</button>
-<!--        Container that holds the map...-->
-
-        <div id='map' style='width: 100%; height: 700px;'></div>
+<div>
+    <h1>My 1st map!!</h1>
+    <div id="submit-form">
+        <form id="userEntry">
+            <label for="search">Search: &nbsp</label>
+            <input type="text" id="search" placeholder="enter an address">
+            <button type="submit" id="btn" value="search">Submit</button>
+        </form>
     </div>
+    <label for="zoom">Choose a zoom level:</label>
 
-    <script src="../js/jquery-2.2.4.js"></script>
+    <select name="zoom" id="zoom">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+    </select>
+
+    <button type="button" id="hide">Hide markers</button>
+    <!--        Container that holds the map...-->
+
+    <div id='map' style='width: 100%; height: 700px;'></div>
+</div>
+
+<script src="../js/jquery-2.2.4.js"></script>
 <!--    mapbox JS-->
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 
@@ -60,7 +66,7 @@
 
 <!--    myJS-->
 <script>
-// added my token to a variable for ease of typing
+    // added my token to a variable for ease of typing
     const mapboxToken = 'pk.eyJ1IjoiY2hhcmxlc3cxMTYiLCJhIjoiY2t5dW5oYm8yMGc4djJ2cGl4eGJvdHBmOSJ9.HOyJMqOoXCHENkAzhN0iCw';
     mapboxgl.accessToken = mapboxToken;
     let map = new mapboxgl.Map({
@@ -72,25 +78,31 @@
 
     // Change the zoom using a dropdown selection
 
-    $('#zoom').change(function (e){
+    $('#zoom').change(function (e) {
         console.log(e.target.value)
         map.setZoom(e.target.value)
     })
 
+    $('#hide').click(function (){
+        let value = $('#hide');
+        $('svg').toggle();
+    })
 
 
     // geocode()
 
     let restaurants = [
         {
-                address: "4834 Whirlwind Dr, San Antonio, TX 78217",
-                popupHTML: "<p>Ranger Creek Brewing & Distillation</p>",
-                web: "<a href='https://drinkrangercreek.com'>drinkrangercreek.com</a>",
+            address: "4834 Whirlwind Dr, San Antonio, TX 78217",
+            popupHTML: "<p>Ranger Creek Brewing & Distillation</p>",
+            web: "<a href='https://drinkrangercreek.com'>drinkrangercreek.com</a>",
+            image: "<img width='100' height='100' src='https://images.squarespace-cdn.com/content/v1/59da7f606f4ca34ba294a74e/1615510736908-IO09IB2STI1FC9UOV3B5/image-asset.jpeg?format=300w'>"
         },
         {
             address: "210 E Aviation Blvd, Universal City, TX 78148",
             popupHTML: "<p>Gather Brewing Co.</p>",
             web: "<a href='https://gatherbrewing.co'>gatherbrewing.co</a>",
+            image: "<img width='100' height='100' src='https://curator-assets.b-cdn.net/a8e8cb13-9331-4f19-865b-a630f4e27d6c/239371120.jpg?width=480&quality=75'</a>"
         },
         {
             address: "122 East Houston St, San Antonio, TX, 78205",
@@ -99,22 +111,20 @@
         },
     ]
 
-restaurants.forEach(function (restaurant){
-    placeMarkerAndPopup(restaurant, mapboxToken, map)
-})
+    restaurants.forEach(function (restaurant) {
+        placeMarkerAndPopup(restaurant, mapboxToken, map)
+    })
 
-function placeMarkerAndPopup(info, token, map){
+    function placeMarkerAndPopup(info, token, map) {
         geocode(info.address, token).then(function (coordinates) {
             let popup = new mapboxgl.Popup()
-                .setHTML(info.popupHTML + info.web);
+                .setHTML("<div class='popUp'>" + info.popupHTML + info.web + info.image + "</div>");
             let marker = new mapboxgl.Marker()
                 .setLngLat(coordinates)
                 .addTo(map)
                 .setPopup(popup)
         })
-}
-
-
+    }
 
 
 </script>
