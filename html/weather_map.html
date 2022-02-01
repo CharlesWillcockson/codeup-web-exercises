@@ -16,7 +16,7 @@
 
 </head>
 <body>
-<header class="topBar">
+<header class="topBar mb-3">
     <h1>Weather Map App</h1>
     <h3>Forecast for:&nbsp <span id="current-city">San Antonio, TX</span></h3>
     <div id="searchBar">
@@ -28,7 +28,7 @@
     </div>
 </header>
 <div>
-    <div class="weatherBox row" id="insertWeatherBoxes"></div>
+    <div class="weatherBox row d-flex justify-content-around mb-3" id="insertWeatherBoxes"></div>
 </div>
 <div id='map' style='width: 100%; height: 700px;'></div>
 
@@ -41,7 +41,8 @@
     // Variables
     const weatherURL = "https://api.openweathermap.org/data/2.5/forecast";
     let userSearch = $('#search');
-
+    let forecast = [];
+    let dates = [];
 
     // MAPBOX MAP
     mapboxgl.accessToken = mapboxToken;
@@ -52,16 +53,15 @@
         "zoom": 10,
     });
 
-
-    // function getData() {
+// ajax get from the weathermap API
     $.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${29.4252}&lon=${-98.4916}&exclude=minutely,hourly&appid=${weatherMapKey}&units=imperial`).done(function (data) {
         console.log(data)
 
-        let forecast = [];
+
 
 // CONVERT THE DT (LINUX TIMESTAMP) TO A NORMAL HUMAN DATE
 
-        function timeConverter() {
+        function dateConverter() {
             for (i = 0; i < 5; i++) {
                 let timeStamp = data.daily[i].dt
                 let dateArr = [];
@@ -71,12 +71,18 @@
                 let month = months[a.getMonth()];
                 let day = a.getDate();
                 let date = day + ' ' + month + ' ' + year;
-                return date;
+                dates.push(date);
             }
         }
 
+        dateConverter();
+        console.log(dates);
+
+    // CREATING THE FORECAST ARRAY BY PULLING FROM API
+
         for (i = 0; i < 5; i++) {
             forecast[i] = {
+                date: dates[i],
                 highTemp: data.daily[i].temp.max,
                 lowTemp: data.daily[i].temp.min,
                 humidity: data.daily[i].humidity,
@@ -87,20 +93,18 @@
         console.log(forecast);
         let html = ""
         for (i = 0; i < forecast.length; i++) {
-            let itemHtml = "<div class='card col-2 d-flex justify-content-around' style='width: 17rem'>"
-            itemHtml += '<span class="date-text">' + 'date' + '</span>';
+            let itemHtml = "<div class='card col-2 d-flex justify-content-between bg-warning py-3' style='width: 17rem'>"
+            itemHtml += '<span class="date-text">' + forecast[i].date + '</span>';
             itemHtml += '<h5 class="highText">' + 'High: ' + forecast[i].highTemp + '</h5>';
             itemHtml += '<h5 class="lowText">' + 'Low: ' + forecast[i].lowTemp + '</h5>';
             itemHtml += '<p class="card-footer my-1">' + 'Humidity: ' + forecast[i].humidity + '</p>';
             itemHtml += '</div>';
             html += itemHtml;
-            console.log(html);
         }
         $('#insertWeatherBoxes').html(html);
+        console.log(html);
+
     });
-
-
-    // getData();
 
 
 </script>
