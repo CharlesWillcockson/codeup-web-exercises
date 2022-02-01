@@ -35,11 +35,13 @@
 
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <script src="../js/mapbox-geocoder-utils.js"></script>
+<script src="../keyz.js"></script>
 
 <script>
-    const weatherMapKey = 'f420004c43920363e4ff6e31fae9a1be';
-    const mapboxToken = 'pk.eyJ1IjoiY2hhcmxlc3cxMTYiLCJhIjoiY2t5dW5oYm8yMGc4djJ2cGl4eGJvdHBmOSJ9.HOyJMqOoXCHENkAzhN0iCw';
-    const weatherURL = "https://api.openweathermap.org/data/2.5/forecast"
+    // Variables
+    const weatherURL = "https://api.openweathermap.org/data/2.5/forecast";
+    let userSearch = $('#search');
+
 
     // MAPBOX MAP
     mapboxgl.accessToken = mapboxToken;
@@ -49,48 +51,58 @@
         "center": [-98.4916, 29.4252],
         "zoom": 10,
     });
-    getData();
-
-    function getData() {
-        $.get(weatherURL, {
-            APPID: weatherMapKey,
-            q: "San Antonio, US",
-            units: "imperial",
-        }).done(function (data) {
-            console.log(data);
-        });
-    }
 
 
-    // function handleResponse(data) {
-        // let highTemp = data.main.temp_max;
-        // let lowTemp = data.main.temp_min;
-        // let pressure = data.main.pressure;
-        // let humidity = data.main.humidity;
-        // let description = data.weather[0].description;
-        // let date = data.main.dt_txt;
-    //     for (i = 0; 1 < data.list.length; i++) {
-    //         if (data.list[i] % 6 === 0){
-    //             days[day + i] =
-    //                 {'date': data.list[i].main.dt_txt,
-    //                  'highTemp': data.list[i].main.temp_max,
-    //                  'lowTemp': data.list[i].main.temp_min,
-    //                  'pressure': data.list[i].main.pressure,
-    //                  'description': data.list[i].main.weather[0].description,
-    //                 }
-    //
-    //         }
-    //
-    // }
-        // let itemHtml = "<div class='card col-2' style='width: 17rem'>"
-        // itemHtml += '<span class="date-text">' + data.list[i].main.dt_txt + '</span>';
-        // itemHtml += '<h5 class="highText">' + 'H ' + data.list[i].main.temp_max + '</h5>';
-        // itemHtml += '<h5 class="lowText">' + 'L ' + data.list[i].main.temp_min + '</h5>';
-        // itemHtml += '<p class="card-footer my-1">' + data.list[i].weather[0].description + '</p>';
-        // itemHtml += '</div>';
-        // $('#insertWeatherBoxes').html(html);
-        // html += itemHtml;
-    // }
+    // function getData() {
+    $.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${29.4252}&lon=${-98.4916}&exclude=minutely,hourly&appid=${weatherMapKey}&`).done(function (data) {
+        console.log(data)
+
+        let forecast = [];
+
+// CONVERT THE DT (LINUX TIMESTAMP) TO A NORMAL HUMAN DATE
+
+        function timeConverter() {
+            for (i = 0; i < 5; i++) {
+                let timeStamp = data.daily[i].dt
+                let dateArr = [];
+                let a = new Date(timeStamp * 1000);
+                let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                let year = a.getFullYear();
+                let month = months[a.getMonth()];
+                let day = a.getDate();
+                let date = day + ' ' + month + ' ' + year;
+                return date;
+            }
+        }
+
+        for (i = 0; i < 5; i++) {
+            forecast[i] = {
+                highTemp: data.daily[i].temp.max,
+                lowTemp: data.daily[i].temp.min,
+                humidity: data.daily[i].humidity,
+                wind: data.daily[i].wind,
+                pressure: data.daily[i].pressure,
+            }
+        }
+        console.log(forecast);
+
+        for (i = 0; i < forecast.length; i++) {
+            let html = ""
+            let itemHtml = "<div class='card col-2' style='width: 17rem'>"
+            itemHtml += '<span class="date-text">' + 'date' + '</span>';
+            itemHtml += '<h5 class="highText">' + 'H ' + forecast[i].highTemp + '</h5>';
+            itemHtml += '<h5 class="lowText">' + 'L ' + forecast[i].lowTemp + '</h5>';
+            itemHtml += '<p class="card-footer my-1">' + forecast[i].humidity + '</p>';
+            itemHtml += '</div>';
+            html += itemHtml;
+            $('#insertWeatherBoxes').html(html);
+        }
+    });
+
+
+    // getData();
+
+
 </script>
 </body>
 </html>
