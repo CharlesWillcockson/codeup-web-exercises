@@ -9,20 +9,30 @@
 <script src="../keyz.js"></script>
 <script>
     // $.get(`https://api.openweathermap.org/data/2.5/forecast/daily?lat=${-98.4916}&lon=${29.4252}&cnt={5}&appid=${weatherMapKey}`)
-    $.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${29.4252}&lon=${98.4916}&exclude=minutely,hourly&appid=${weatherMapKey}`).done(function (data){
-        console.log(data)
-    })
+    // $.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${29.4252}&lon=${98.4916}&exclude=minutely,hourly&appid=${weatherMapKey}`).done(function (data){
+    //     console.log(data)
+    // })
+    $.get("http://api.openweathermap.org/data/2.5/forecast", {
+        APPID: weatherMapKey,
+        lat:    29.423017,
+        lon:   -98.48527,
+        units: "imperial"
+    }).done(function(data) {
+        console.log(data);
+    });
 
-    function timeConverter(){
-        var a = new Date(UNIX_timestamp * 1000);
-        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-        var year = a.getFullYear();
-        var month = months[a.getMonth()];
-        var date = a.getDate();
-        var time = date + ' ' + month + ' ' + year ;
-        return time;
-    }
-    console.log(timeConverter(1643691600));
+
+
+    // function timeConverter(){
+    //     var a = new Date(UNIX_timestamp * 1000);
+    //     var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    //     var year = a.getFullYear();
+    //     var month = months[a.getMonth()];
+    //     var date = a.getDate();
+    //     var time = date + ' ' + month + ' ' + year ;
+    //     return time;
+    // }
+    // console.log(timeConverter(1643691600));
 </script>
 </body>
 </html>
