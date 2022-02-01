@@ -54,7 +54,7 @@
 
 
     // function getData() {
-    $.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${29.4252}&lon=${-98.4916}&exclude=minutely,hourly&appid=${weatherMapKey}&`).done(function (data) {
+    $.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${29.4252}&lon=${-98.4916}&exclude=minutely,hourly&appid=${weatherMapKey}&units=imperial`).done(function (data) {
         console.log(data)
 
         let forecast = [];
@@ -85,18 +85,18 @@
             }
         }
         console.log(forecast);
-
+        let html = ""
         for (i = 0; i < forecast.length; i++) {
-            let html = ""
-            let itemHtml = "<div class='card col-2' style='width: 17rem'>"
+            let itemHtml = "<div class='card col-2 d-flex justify-content-around' style='width: 17rem'>"
             itemHtml += '<span class="date-text">' + 'date' + '</span>';
-            itemHtml += '<h5 class="highText">' + 'H ' + forecast[i].highTemp + '</h5>';
-            itemHtml += '<h5 class="lowText">' + 'L ' + forecast[i].lowTemp + '</h5>';
-            itemHtml += '<p class="card-footer my-1">' + forecast[i].humidity + '</p>';
+            itemHtml += '<h5 class="highText">' + 'High: ' + forecast[i].highTemp + '</h5>';
+            itemHtml += '<h5 class="lowText">' + 'Low: ' + forecast[i].lowTemp + '</h5>';
+            itemHtml += '<p class="card-footer my-1">' + 'Humidity: ' + forecast[i].humidity + '</p>';
             itemHtml += '</div>';
             html += itemHtml;
-            $('#insertWeatherBoxes').html(html);
+            console.log(html);
         }
+        $('#insertWeatherBoxes').html(html);
     });
 
 

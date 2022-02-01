@@ -1,3 +1,5 @@
+
+
 header {
     margin-top: 10px;
     background-image: url("../assets/WallpaperFusion-lightning-storm-clouds-photo-1680x480.jpeg");
@@ -7,6 +9,27 @@ header {
     font-family: 'Mochiy Pop P One', sans-serif;
     text-shadow: 1px 1px white;
 
+}
+
+.date-text {
+    text-align: center;
+    font-family: 'Mochiy Pop P One', sans-serif;
+
+}
+
+.highText{
+    font-family: 'Mochiy Pop P One', sans-serif;
+    text-align: center;
+}
+
+.lowText{
+    font-family: 'Mochiy Pop P One', sans-serif;
+    text-align: center;
+}
+
+.card-footer {
+    font-family: 'Mochiy Pop P One', sans-serif;
+    text-align: center;
 }
 
 #current-city {
