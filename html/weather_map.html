@@ -124,6 +124,7 @@
                     wind: data.daily[i].wind,
                     pressure: data.daily[i].pressure,
                     description: data.daily[i].weather[0].description,
+                    icon:data.daily[i].weather[0].icon
                 }
             }
             console.log(forecast);
@@ -132,8 +133,7 @@
                 let itemHtml = "<div class='card col-lg-2 py-3 my-2' style='width: 17rem'>"
                 itemHtml += '<span class="card-title date-text">' + forecast[i].date + '</span>';
                 itemHtml += '<p class="highText my-1">' + 'High: ' + forecast[i].highTemp  + ' / Low: ' +  forecast[i].lowTemp + '</p>';
-                itemHtml +=  `<img id="weather-icon" src="https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png" alt="">`
-                itemHtml += '<h5 class="lowText my-1">' + forecast[i].description + '</h5>';
+                itemHtml +=  `<p class="lowText my-1"><img id="weather-icon" src="https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png" alt="">${forecast[i].description}</p>`;
                 itemHtml += '<p class="card-footer my-1">' + 'Humidity: ' + forecast[i].humidity + '\n Pressure: ' + forecast[i].pressure + '</p>';
                 itemHtml += '</div>';
                 html += itemHtml;
