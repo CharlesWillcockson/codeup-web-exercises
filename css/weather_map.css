@@ -34,6 +34,7 @@ header {
 
 .card {
     color:mediumpurple;
+    justify-content: center;
 }
 
 .date-text {
@@ -46,6 +47,11 @@ header {
     font-family: 'Mochiy Pop P One', sans-serif;
     text-align: center;
     font-size: .75em;
+}
+
+#weather-icon {
+    width: 75px;
+    height: 75px;
 }
 
 .lowText{
