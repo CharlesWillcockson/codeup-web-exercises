@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kanye</title>
+</head>
+<body>
+<h1 id="swanson"></h1>
+<p>-Ron Swanson</p>
+
+<h1 id="webseries"></h1>
+
+<script src="../js/jquery-2.2.4.js"></script>
+<script>
+    $.get("https://api.kanye.rest/", {}).done(function (data){
+        console.log(data)
+    })
+
+    $.get("https://ron-swanson-quotes.herokuapp.com/v2/quotes", {}).done(function (data){
+        console.log(data)
+        document.getElementById('swanson').innerHTML = data;
+    })
+
+
+
+</script>
+</body>
+</html>

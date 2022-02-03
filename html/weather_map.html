@@ -29,8 +29,11 @@
 <div>
     <div class="weatherBox row d-flex justify-content-around mb-3 mx-3" id="insertWeatherBoxes"></div>
 </div>
-<div class='container' id='map' style='width: 95%; height: 700px;'></div>
-<pre id="coordinates" class="coordinates"></pre>
+
+<div class="container">
+    <div id='map' style='width: 95%; height: 700px;'></div>
+    <pre id="coordinates" class="coordinates"></pre>
+</div>
 
 <script src="../js/jquery-2.2.4.js"></script>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
@@ -41,12 +44,13 @@
     // Variables
     let forecast = [];
     let dates = [];
-
+    const coordinates = document.getElementById('coordinates');
 
     // MAPBOX MAP
     mapboxgl.accessToken = mapboxToken;
 
-    const coordinates = document.getElementById('coordinates');
+    weatherAjax(29.4252, -98.4916);
+
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
@@ -60,16 +64,16 @@
         .setLngLat([-98.4916, 29.4252])
         .addTo(map);
 
+
     function onDragEnd() {
         const lngLat = marker.getLngLat();
         coordinates.style.display = 'block';
         coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
-        reverseGeocode({lng: lngLat.lng, lat: lngLat.lat}, mapboxToken).then(function (results) {
-            // logs the address for The Alamo
-            console.log(results);
-            let newCity = results
-            document.getElementById('current-city').innerHTML = newCity;
-        })
+        // reverseGeocode({lng: lngLat.lng, lat: lngLat.lat}, mapboxToken).then(function (results) {
+        //     // logs the address for The Alamo
+        //     console.log(results);
+        //     document.getElementById('current-city').innerHTML = (results);
+        // })
         weatherAjax(lngLat.lat, lngLat.lng)
     }
 
@@ -82,12 +86,16 @@
             console.log(result);
             map.setCenter(result);
             map.setZoom(15);
-            let marker = new mapboxgl.Marker()
+            let marker = new mapboxgl.Marker({
+                draggable: true
+            })
                 .setLngLat(result)
                 .addTo(map)
-            document.getElementById('current-city').innerHTML = searchValue;
             weatherAjax(result[1], result[0]);
+            map.flyTo({center: [result[1], result[0]], essential: true});
         })
+
+
     });
 
     // ajax get from the weathermap API
@@ -111,7 +119,6 @@
             }
 
             dateConverter();
-            console.log(dates);
 
             // -------------CREATING THE FORECAST ARRAY BY PULLING FROM API ------------------------
 
@@ -124,24 +131,32 @@
                     wind: data.daily[i].wind,
                     pressure: data.daily[i].pressure,
                     description: data.daily[i].weather[0].description,
-                    icon:data.daily[i].weather[0].icon
+                    icon: data.daily[i].weather[0].icon,
                 }
             }
-            console.log(forecast);
             let html = ""
             for (i = 0; i < forecast.length; i++) {
-                let itemHtml = "<div class='card col-lg-2 py-3 my-2' style='width: 17rem'>"
+                let itemHtml = "<div class='card col-lg-2 py-3 my-2 shadow' style='width: 17rem'>"
                 itemHtml += '<span class="card-title date-text">' + forecast[i].date + '</span>';
-                itemHtml += '<p class="highText my-1">' + 'High: ' + forecast[i].highTemp  + ' / Low: ' +  forecast[i].lowTemp + '</p>';
-                itemHtml +=  `<p class="lowText my-1"><img id="weather-icon" src="https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png" alt="">${forecast[i].description}</p>`;
+                itemHtml += '<p class="highText my-1">' + 'High: ' + forecast[i].highTemp + ' / Low: ' + forecast[i].lowTemp + '</p>';
+                itemHtml += `<p class="lowText my-1"><img id="weather-icon" src="https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png" alt="">${forecast[i].description}</p>`;
                 itemHtml += '<p class="card-footer my-1">' + 'Humidity: ' + forecast[i].humidity + '\n Pressure: ' + forecast[i].pressure + '</p>';
                 itemHtml += '</div>';
                 html += itemHtml;
             }
             $('#insertWeatherBoxes').html(html);
-            console.log(html);
+
+            reverseGeocode({lng: lng, lat: lat}, mapboxToken).then(function (results) {
+                // logs the address for The Alamo
+                document.getElementById('current-city').innerHTML = (results);
+            });
         });
+
     }
+
+
+
+
 
 
 </script>
