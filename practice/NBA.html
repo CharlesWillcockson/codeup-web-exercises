@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NBA</title>
+</head>
+<body>
+
+<script src="../js/jquery-2.2.4.js"></script>
+<script src="../keyz.js"></script>
+<script>
+    const settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api-nba-v1.p.rapidapi.com/players/lastName/%7Blastname%7D",
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
+            "x-rapidapi-key": "47954ef75fmshb0ad08216454599p177661jsn777350d6b0b9"
+        }
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+</script>
+</body>
+</html>

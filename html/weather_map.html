@@ -18,9 +18,9 @@
 </head>
 <body class="bg-dark">
 <header class="topBar mb-3">
-    <h1>Weather Map App</h1>
-    <h3>Forecast for:&nbsp </h3>
-    <p id="current-city">San Antonio, TX</p>
+    <h1>Weather Map</h1>
+
+    <h3 id="current-city">San Antonio, TX</h3>
     <div id="searchBar">
         <input type="text" id="userSearch" placeholder="enter city">
         <button id="search">Search</button>
@@ -34,6 +34,11 @@
     <div id='map' style='width: 95%; height: 700px;'></div>
     <pre id="coordinates" class="coordinates"></pre>
 </div>
+
+
+<footer>
+    <h4>Charles Willcockson / Sirius 2022</h4>
+</footer>
 
 <script src="../js/jquery-2.2.4.js"></script>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
@@ -58,105 +63,104 @@
         zoom: 10
     });
 
-    const marker = new mapboxgl.Marker({
-        draggable: true
-    })
-        .setLngLat([-98.4916, 29.4252])
-        .addTo(map);
-
-
-    function onDragEnd() {
-        const lngLat = marker.getLngLat();
-        coordinates.style.display = 'block';
-        coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
-        // reverseGeocode({lng: lngLat.lng, lat: lngLat.lat}, mapboxToken).then(function (results) {
-        //     // logs the address for The Alamo
-        //     console.log(results);
-        //     document.getElementById('current-city').innerHTML = (results);
-        // })
-        weatherAjax(lngLat.lat, lngLat.lng)
-    }
-
-    marker.on('dragend', onDragEnd);
-
-    $('#search').click(function () {
-        $(".mapboxgl-marker").remove()
-        let searchValue = $('#userSearch').val()
-        geocode(searchValue, mapboxToken).then(function (result) {
-            console.log(result);
-            map.setCenter(result);
-            map.setZoom(15);
-            let marker = new mapboxgl.Marker({
-                draggable: true
-            })
-                .setLngLat(result)
-                .addTo(map)
-            weatherAjax(result[1], result[0]);
-            map.flyTo({center: [result[1], result[0]], essential: true});
+    $('.mapboxgl-canvas').click(function () {
+        $('.mapboxgl-marker').remove();
+        const marker = new mapboxgl.Marker({
+            draggable: true
         })
+            .setLngLat([-98.4916, 29.4252])
+            .addTo(map);
+            map.setCenter([-98.4916, 29.4252]);
+            map.setZoom(10);
 
+        function onDragEnd() {
+            const lngLat = marker.getLngLat();
+            coordinates.style.display = 'block';
+            coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+            // reverseGeocode({lng: lngLat.lng, lat: lngLat.lat}, mapboxToken).then(function (results) {
+            //     // logs the address for The Alamo
+            //     console.log(results);
+            //     document.getElementById('current-city').innerHTML = (results);
+            // })
+            weatherAjax(lngLat.lat, lngLat.lng)
+        }
 
+        marker.on('dragend', onDragEnd);
     });
 
-    // ajax get from the weathermap API
-    function weatherAjax(lat, lng) {
-        $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lng + "&exclude=minutely,hourly&appid=" + weatherMapKey + "&units=imperial").done(function (data) {
-            console.log(data)
+        $('#search').click(function () {
+            $(".mapboxgl-marker").remove()
+            let searchValue = $('#userSearch').val()
+            geocode(searchValue, mapboxToken).then(function (result) {
+                console.log(result);
+                map.setCenter(result);
+                map.setZoom(15);
+                let marker = new mapboxgl.Marker({
+                })
+                    .setLngLat(result)
+                    .addTo(map)
+                weatherAjax(result[1], result[0]);
+                map.flyTo({center: [result[1], result[0]], essential: true});
+            })
 
-            // ----------------------CONVERT THE DT (LINUX TIMESTAMP) TO A NORMAL HUMAN DATE---------------------------
-            function dateConverter() {
-                for (i = 0; i < 5; i++) {
-                    let timeStamp = data.daily[i].dt
-                    let dateArr = [];
-                    let a = new Date(timeStamp * 1000);
-                    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                    let year = a.getFullYear();
-                    let month = months[a.getMonth()];
-                    let day = a.getDate();
-                    let date = day + ' ' + month + ' ' + year;
-                    dates.push(date);
-                }
-            }
 
-            dateConverter();
-
-            // -------------CREATING THE FORECAST ARRAY BY PULLING FROM API ------------------------
-
-            for (i = 0; i < 5; i++) {
-                forecast[i] = {
-                    date: dates[i],
-                    highTemp: data.daily[i].temp.max,
-                    lowTemp: data.daily[i].temp.min,
-                    humidity: data.daily[i].humidity,
-                    wind: data.daily[i].wind,
-                    pressure: data.daily[i].pressure,
-                    description: data.daily[i].weather[0].description,
-                    icon: data.daily[i].weather[0].icon,
-                }
-            }
-            let html = ""
-            for (i = 0; i < forecast.length; i++) {
-                let itemHtml = "<div class='card col-lg-2 py-3 my-2 shadow' style='width: 17rem'>"
-                itemHtml += '<span class="card-title date-text">' + forecast[i].date + '</span>';
-                itemHtml += '<p class="highText my-1">' + 'High: ' + forecast[i].highTemp + ' / Low: ' + forecast[i].lowTemp + '</p>';
-                itemHtml += `<p class="lowText my-1"><img id="weather-icon" src="https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png" alt="">${forecast[i].description}</p>`;
-                itemHtml += '<p class="card-footer my-1">' + 'Humidity: ' + forecast[i].humidity + '\n Pressure: ' + forecast[i].pressure + '</p>';
-                itemHtml += '</div>';
-                html += itemHtml;
-            }
-            $('#insertWeatherBoxes').html(html);
-
-            reverseGeocode({lng: lng, lat: lat}, mapboxToken).then(function (results) {
-                // logs the address for The Alamo
-                document.getElementById('current-city').innerHTML = (results);
-            });
         });
 
-    }
 
+        // ajax get from the weathermap API.  Calls the API data and converts it to html bootstrap cards.
+        function weatherAjax(lat, lng) {
+            $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lng + "&exclude=minutely,hourly&appid=" + weatherMapKey + "&units=imperial").done(function (data) {
+                console.log(data)
 
+                // ----------------------CONVERT THE DT (LINUX TIMESTAMP) TO A NORMAL HUMAN DATE---------------------------
+                function dateConverter() {
+                    for (i = 0; i < 5; i++) {
+                        let timeStamp = data.daily[i].dt
+                        let dateArr = [];
+                        let a = new Date(timeStamp * 1000);
+                        let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                        let year = a.getFullYear();
+                        let month = months[a.getMonth()];
+                        let day = a.getDate();
+                        let date = day + ' ' + month + ' ' + year;
+                        dates.push(date);
+                    }
+                }
 
+                dateConverter();
 
+                // -------------CREATING THE FORECAST ARRAY BY PULLING FROM API ------------------------
+
+                for (i = 0; i < 5; i++) {
+                    forecast[i] = {
+                        date: dates[i],
+                        highTemp: data.daily[i].temp.max,
+                        lowTemp: data.daily[i].temp.min,
+                        humidity: data.daily[i].humidity,
+                        wind: data.daily[i].wind,
+                        pressure: data.daily[i].pressure,
+                        description: data.daily[i].weather[0].description,
+                        icon: data.daily[i].weather[0].icon,
+                    }
+                }
+                let html = ""
+                for (i = 0; i < forecast.length; i++) {
+                    let itemHtml = "<div class='card col-lg-2 py-3 my-2 shadow' style='width: 17rem'>"
+                    itemHtml += '<span class="card-title date-text">' + forecast[i].date + '</span>';
+                    itemHtml += '<p class="highText my-1">' + 'High: ' + forecast[i].highTemp + ' / Low: ' + forecast[i].lowTemp + '</p>';
+                    itemHtml += `<p class="lowText my-1"><img id="weather-icon" src="https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png" alt="">${forecast[i].description}</p>`;
+                    itemHtml += '<p class="card-footer my-1">' + 'Humidity: ' + forecast[i].humidity + '\n Pressure: ' + forecast[i].pressure + '</p>';
+                    itemHtml += '</div>';
+                    html += itemHtml;
+                }
+                $('#insertWeatherBoxes').html(html);
+
+                reverseGeocode({lng: lng, lat: lat}, mapboxToken).then(function (results) {
+                    document.getElementById('current-city').innerHTML = `Forecast for: ${(results)}`;
+                });
+            });
+
+        }
 
 
 </script>

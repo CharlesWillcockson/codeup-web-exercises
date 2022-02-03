@@ -8,9 +8,9 @@ header {
     background-image: url("../assets/WallpaperFusion-lightning-storm-clouds-photo-1680x480.jpeg");
     padding: 30px;
     border-radius: 10px;
-    color: mediumpurple;
+    color: navajowhite;
     font-family: 'Mochiy Pop P One', sans-serif;
-    text-shadow: 1px 1px white;
+    /*text-shadow: 1px 1px white;*/
 }
 
 
@@ -27,14 +27,20 @@ header {
 /*    border-radius: 3px;*/
 /*    display: none;*/
 /*}*/
-/*#map {*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    bottom: 0;*/
-/*    width: 100%; }*/
+footer {
+    background-color: grey;
+    text-align: center;
+    margin: 0 225px;
+    border-radius: 10px;
+    font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+pre{
+    color: grey;
+}
 
 .card {
-    color:mediumpurple;
+    color: mediumpurple;
     justify-content: center;
 }
 
@@ -44,7 +50,7 @@ header {
 
 }
 
-.highText{
+.highText {
     font-family: 'Mochiy Pop P One', sans-serif;
     text-align: center;
     font-size: .75em;
@@ -55,7 +61,7 @@ header {
     height: 75px;
 }
 
-.lowText{
+.lowText {
     font-family: 'Mochiy Pop P One', sans-serif;
     text-align: center;
 }
@@ -65,9 +71,7 @@ header {
     text-align: center;
 }
 
-#current-city {
-    font-size: 0.75em;
-}
+
 
 #map {
     border-radius: 10px;

@@ -3,25 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>kanye</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<h1 id="swanson"></h1>
-<p>-Ron Swanson</p>
-
+<div class="image">
+</div>
+<hr>
+<div>
+    <h1 id="swanson"></h1>
+    <p>-Ron Swanson</p>
+</div>
 <h1 id="webseries"></h1>
+
 
 <script src="../js/jquery-2.2.4.js"></script>
 <script>
-    $.get("https://api.kanye.rest/", {}).done(function (data){
-        console.log(data)
-    })
+    // $.get("https://api.kanye.rest/", {}).done(function (data) {
+    //     console.log(data)
+    // })
 
-    $.get("https://ron-swanson-quotes.herokuapp.com/v2/quotes", {}).done(function (data){
+    $.get("https://ron-swanson-quotes.herokuapp.com/v2/quotes", {}).done(function (data) {
         console.log(data)
         document.getElementById('swanson').innerHTML = data;
     })
 
+    $.get('https://api.imgflip.com/get_memes', {}).done(function (data) {
+        console.log(data);
+        let picNumber = Math.floor(Math.random() * 100);
+        $('.image').append(`<img src=${data.data.memes[picNumber].url}>`);
+    })
 
+    // $.get('https://api.imgflip.com/get_memes', {}).done(function (data) {
+    //     console.log(data);
+    // })
 
 </script>
 </body>
