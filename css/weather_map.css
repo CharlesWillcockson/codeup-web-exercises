@@ -1,16 +1,36 @@
-/*body{*/
-/*    background-image: url("../assets/lightning5.jpeg");*/
-/*    background-size: cover;*/
-/*}*/
+body {
+    background: hsla(217, 100%, 50%, 1);
+
+    background: linear-gradient(90deg, hsla(217, 100%, 50%, 1) 24%, hsla(186, 100%, 69%, 1) 100%);
+
+    background: -moz-linear-gradient(90deg, hsla(217, 100%, 50%, 1) 24%, hsla(186, 100%, 69%, 1) 100%);
+
+    background: -webkit-linear-gradient(90deg, hsla(217, 100%, 50%, 1) 24%, hsla(186, 100%, 69%, 1) 100%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0061FF", endColorstr="#60EFFF", GradientType=1 );
+}
 
 header {
     margin: 10px 15px 0 15px;
-    background-image: url("../assets/WallpaperFusion-lightning-storm-clouds-photo-1680x480.jpeg");
+    background-image: url("../assets/waves.jpeg");
+    background-size: cover;
     padding: 30px;
     border-radius: 10px;
-    color: navajowhite;
+    color: white;
     font-family: 'Mochiy Pop P One', sans-serif;
-    /*text-shadow: 1px 1px white;*/
+    text-shadow: 1px 1px lightseagreen;
+}
+
+.bigCard {
+    background: hsla(152, 100%, 50%, 1);
+
+    background: linear-gradient(90deg, hsla(152, 100%, 50%, 1) 2%, hsla(186, 100%, 69%, 1) 100%);
+
+    background: -moz-linear-gradient(90deg, hsla(152, 100%, 50%, 1) 2%, hsla(186, 100%, 69%, 1) 100%);
+
+    background: -webkit-linear-gradient(90deg, hsla(152, 100%, 50%, 1) 2%, hsla(186, 100%, 69%, 1) 100%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#00FF87", endColorstr="#60EFFF", GradientType=1 );
 }
 
 
@@ -40,7 +60,7 @@ pre{
 }
 
 .card {
-    color: mediumpurple;
+    color: lightseagreen;
     justify-content: center;
 }
 
