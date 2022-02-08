@@ -1,5 +1,21 @@
-const lastCommit = username => {
-    fetch('https://api.github.com/users', {headers: {'Authorization': GHToken})
-        .then(response => response.json())
-        .then()
+let GHToken = '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'
+
+function getLastCommit(githubUsername) {
+    let url = `https://api.github.com/users/${githubUsername}/events`;
+    let githubResponse = fetch(url, {headers: {'Authorization': `token ${GHToken}`}});
+    return githubResponse
+        .then((response)=>{
+            return response.json();
+        })
+        .then((githubEventData)=>{
+            for (let githubEvent of githubEventData) {
+                if(githubEvent.type === "PushEvent") {
+                    console.log(githubEvent.created_at);
+                    return new Date(githubEvent.created_at);
+                }
+            }
+        });
 }
+
+getLastCommit('CharlesWillcockson')
+    .then((date)=>console.log(date));

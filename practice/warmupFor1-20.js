@@ -2,15 +2,22 @@
 //
 // input example: "bJIENsdfRAIRVIrsRFAijgRar"
 
-function checkCase(str){
-    let character = '';
-    while(i <= stringToFilter){
-        if (array[i] === array[i].toLowerCase()){
-            return (array[i] + ' is lower case!');
-        }else {
-            return (array[i] + ' is upper case!!');
-        }
-    }
-}
+// function checkCase(str){
+//     let character = '';
+//     while(i <= stringToFilter){
+//         if (array[i] === array[i].toLowerCase()){
+//             return (array[i] + ' is lower case!');
+//         }else {
+//             return (array[i] + ' is upper case!!');
+//         }
+//     }
+// }
+//
+// console.log(checkCase('DsDsSW'));
 
-console.log(checkCase('DsDsSW'));
+let numArray = [1, 1, 2, 3, 3, 4, 5, 6, 6, 7]
+
+function removeDupes (numArray) {
+    return numArray.filter((num, index) => numArray.indexOf(num) === index);
+}
+console.log(removeDupes(numArray));
