@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch</title>
+</head>
+<body>
+<script src="../js/jquery-2.2.4.js"></script>
+<script>
+    fetch(`https://api.github.com/zen`)
+        .then(function (res) {
+            console.log(res);
+        })
+
+    fetch("https://www.boredapi.com/activity")
+        .then (data =>  console.log(data))
+
+    fetch("https://www.boredapi.com/activity")
+        .then (data => {
+            console.log(data);
+            console.log(data.body);
+        })
+
+    fetch("https://www.boredapi.com/activity")
+        .then (
+            function (res) {
+                console.log(res);
+                console.log('successful!!');
+            }, function (err) {
+                console.log(err)
+                console.log('failed!!')
+            }
+        );
+
+
+
+
+</script>
+</body>
+</html>
