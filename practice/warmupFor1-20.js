@@ -15,9 +15,18 @@
 //
 // console.log(checkCase('DsDsSW'));
 
-let numArray = [1, 1, 2, 3, 3, 4, 5, 6, 6, 7]
+// let numArray = [1, 1, 2, 3, 3, 4, 5, 6, 6, 7]
+//
+// function removeDupes (numArray) {
+//     return numArray.filter((num, index) => numArray.indexOf(num) === index);
+// }
+// console.log(removeDupes(numArray));
 
-function removeDupes (numArray) {
-    return numArray.filter((num, index) => numArray.indexOf(num) === index);
+function numVowels(str){
+    const regex = /[aeiou]/gi;
+    const count = str.match(regex).length;
+    return count;
+
 }
-console.log(removeDupes(numArray));
+
+console.log(numVowels('helicopter'));
