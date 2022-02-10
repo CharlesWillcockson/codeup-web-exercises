@@ -14,3 +14,24 @@ function sumDigits(num){
 
 console.log(sumDigits("42958372"));
 
+// write a function that counts the number of duplicate characters.
+//     example input: "adsjfdsfsfjsdjfhacabcsbajda"
+// expected output: { a: 5, b: 2, c: 2, d: 4, f: 4, j: 4, s: 5 }
+
+function dupes (str) {
+    let numObj = {};
+    if (str) {
+
+        for (let i = 0; i < str.length; i++) {
+            if (numObj[str[i]]) {
+                numObj[str[i]] += numObj[str[i]];
+            } else {
+                numObj[str[i]] = 1;
+            }
+        }
+        console.log(numObj)
+    }
+}
+
+
+console.log(dupes("adsjfdsfsfjsdjfhacabcsbajda"));
