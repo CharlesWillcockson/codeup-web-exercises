@@ -30,7 +30,7 @@ function dupes (str) {
             }
         }
         console.log(numObj)
-    }
+    }.com
 }
 
 
